@@ -1,61 +1,47 @@
 import React, { useState } from 'react'
-
+import { TbAirConditioning } from "react-icons/tb";
+import { FaSatelliteDish } from "react-icons/fa";
+import { FaWifi } from "react-icons/fa";
+import { LuUtensilsCrossed } from "react-icons/lu";
+import { PiThermometerHotBold } from "react-icons/pi";
+import { GrElevator } from "react-icons/gr";
+import { LiaIntercom } from "react-icons/lia";
+import { PiPark } from "react-icons/pi";
+import { MdMicrowave } from "react-icons/md";
+import { LuParkingCircle } from "react-icons/lu";
+import { RiParkingBoxLine } from "react-icons/ri";
+import { MdSecurity } from "react-icons/md";
+import { GiKidSlide } from "react-icons/gi";
+import { BiCctv } from "react-icons/bi";
+import { ImPower } from "react-icons/im";
+import { GiGasStove } from "react-icons/gi";
+import { GiWeightLiftingUp } from "react-icons/gi";
+import { FaPersonSwimming } from "react-icons/fa6";
+import { PiCourtBasketball } from "react-icons/pi";
+import { TbBuildingBank } from "react-icons/tb";
+import { GiChimney } from "react-icons/gi";
+import { FaKitchenSet } from "react-icons/fa6";
+import { TbFridge } from "react-icons/tb";
+import { GiGrassMushroom } from "react-icons/gi";
+import { GiGrass } from "react-icons/gi";
+import { FaChargingStation } from "react-icons/fa6";
+import { PiWarehouseLight } from "react-icons/pi";
+import './Form.css';
 function Form() {
   const [category, setcategory] = useState('residential')
   const [sold, setsold] = useState('')
   const [floorplan, setfloorplan] = useState();
   const [photos, setphotos] = useState();
   const [resitype, setresitype] = useState('sale')
-  const [residential, setresidential] = useState('apartment')
-  const [commercial, setcommercial] = useState('officespace')
+  const [residential, setresidential] = useState('')
+  const [commercial, setcommercial] = useState('')
   const [leased, setleased] = useState('no')
+  const [activeButton, setActiveButton] = useState('');
+  const [activeButton2, setActiveButton2] = useState('');
+  const [activeButton3, setActiveButton3] = useState('');
+  const [activeButton4, setActiveButton4] = useState('');
   const initialdata = {
-      'city': '',
-      'locality': '',
-      'propertyname': '',
-      'address': '',
-      'configuration': '',
-      'areadetail': '',
-      'areatype': '',
-      'bathroom': '',
-      'balcony': '',
-      'description': '',
-      'furnishtype': '',
-      'reraid': '',
-      'floorno': '',
-      'totalfloor': '',
-      'constructionstatus': '',
-      'propertydate': '',
-      'propertyfacing': '',
-      'price': '',
-      'maintenancecharge': '',
-      'tokenamount': '',
-      'length': '',
-      'width': '',
-      'movingstatus': '',
-      'movingdate': '',
-      'montlyrent': '',
-      'secuuritydeposit': '',
-      'currentlease': '',
-      'remainingtime': '',
-      'boundarywall': '',
-      'noofopenside': '',
-      'floorallowed': '',
-      'modifyinterior': '',
-      'lockinperiod': '',
-      'range': 'Lakh',
-      'moneytype': 'Rupees',
-      amenities: [],
-      'metro': '',
-      'school': '',
-      'hospital': '',
-      'mall': '',
-      'resturant': '',
-      'bus': '',
-      'cinema': '',
-      'country':'india'
-   }
-  const [formdata, setformdata] = useState({
+    'pincode': '',
     'city': '',
     'locality': '',
     'propertyname': '',
@@ -78,8 +64,6 @@ function Form() {
     'tokenamount': '',
     'length': '',
     'width': '',
-    'movingstatus': '',
-    'movingdate': '',
     'montlyrent': '',
     'secuuritydeposit': '',
     'currentlease': '',
@@ -89,7 +73,7 @@ function Form() {
     'floorallowed': '',
     'modifyinterior': '',
     'lockinperiod': '',
-    'range': 'Lakh',
+    'pricerange': 'Lakh',
     'moneytype': 'Rupees',
     amenities: [],
     'metro': '',
@@ -99,20 +83,67 @@ function Form() {
     'resturant': '',
     'bus': '',
     'cinema': '',
-    'country':'india'
+    'country': 'india'
+  }
+  const [formdata, setformdata] = useState({
+    'pincode': '',
+    'city': '',
+    'locality': '',
+    'propertyname': '',
+    'address': '',
+    'configuration': '',
+    'areadetail': '',
+    'areatype': '',
+    'bathroom': '',
+    'balcony': '',
+    'description': '',
+    'furnishtype': '',
+    'reraid': '',
+    'floorno': '',
+    'totalfloor': '',
+    'constructionstatus': '',
+    'propertydate': '',
+    'propertyfacing': '',
+    'price': '',
+    'maintenancecharge': '',
+    'tokenamount': '',
+    'length': '',
+    'width': '',
+    'montlyrent': '',
+    'secuuritydeposit': '',
+    'currentlease': '',
+    'remainingtime': '',
+    'boundarywall': '',
+    'noofopenside': '',
+    'floorallowed': '',
+    'modifyinterior': '',
+    'lockinperiod': '',
+    'pricerange': 'Lakh',
+    'moneytype': 'Rupees',
+    amenities: [],
+    'metro': '',
+    'school': '',
+    'hospital': '',
+    'mall': '',
+    'resturant': '',
+    'bus': '',
+    'cinema': '',
+    'country': 'india'
   })
-  const clickhandler1 = () => {
-    setresitype('sale');
-  }
-  const clickhandler2 = () => {
-    setresitype('rent');
-  }
-  const clickhandler3 = () => {
-    setcategory('residential');
-  }
-  const clickhandler4 = () => {
-    setcategory('commercial');
-  }
+
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName); // Set the active button when clicked
+  };
+  const handleButtonClick2 = (buttonName) => {
+    setActiveButton2(buttonName); // Set the active button when clicked
+  };
+  const handleButtonClick3 = (buttonName) => {
+    setActiveButton3(buttonName); // Set the active button when clicked
+  };
+  const handleButtonClick4 = (buttonName) => {
+    setActiveButton4(buttonName); // Set the active button when clicked
+  };
   const resihandler1 = () => {
     setformdata(initialdata);
     setresidential('apartment');
@@ -156,8 +187,8 @@ function Form() {
   const leasedchange1 = (e) => {
     setleased(e.target.value);
   }
-  const modify =(e)=>{
-    formdata.modifyinterior=e;
+  const modify = (e) => {
+    formdata.modifyinterior = e;
   }
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -195,6 +226,7 @@ function Form() {
         : prevData[name].filter((item) => item !== value),
     }));
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formDataWithExtras = {
@@ -205,673 +237,145 @@ function Form() {
       floorplan: floorplan,     // Append floorplan
       photos: photos, // Append photos array
       Commercail: commercial,
-      leased:leased //commercial category
+      leased: leased //commercial category
     };
     console.log('Form submitted:', formDataWithExtras);
     alert('form submitted sucessfully')
   };
   return (
     <>
-      <div><h1>property form </h1>
-        <button onClick={clickhandler1}>Sale</button>
-        <button onClick={clickhandler2}>Rent</button>
+      <div><h1 id='head'>property form </h1>
+        <button className={activeButton === 'sale' ? 'active' : ''}
+          onClick={() => {
+            setresitype('sale');
+            handleButtonClick('sale');
+          }}
+        >Sale</button>
+        <button className={activeButton === 'rent' ? 'active' : ''}
+          onClick={() => {
+            setresitype('rent');
+            handleButtonClick('rent');
+          }}>Rent</button>
       </div>
       <br></br>
       <div>
-        <button onClick={clickhandler3}>Residential</button>
-        <button onClick={clickhandler4}>Commercial</button>
+        <button className={activeButton2 === 'residential' ? 'active' : ''}
+          onClick={() => {
+            setcategory('residential');
+            handleButtonClick2('residential');
+          }}>Residential</button>
+        <button className={activeButton2 === 'commercial' ? 'active' : ''}
+          onClick={() => {
+            setcategory('commercial');
+            handleButtonClick2('commercial');
+          }}>Commercial</button>
       </div>
       {resitype === 'sale' && category === 'residential' && (
         <>
           <br></br>
-          <button onClick={resihandler1}>Apartment</button>
-          <button onClick={resihandler2} >House/villa</button>
-          <button onClick={resihandler3}>Plot</button>
-          <button onClick={resihandler4}>Builderfloor</button>
-          <button onClick={resihandler5}>farmhouse</button>
+          <button className={activeButton3 === 'apartment' ? 'active' : ''}
+            onClick={() => {
+              setresidential('apartment');
+              handleButtonClick3('apartment');
+              setformdata(initialdata);
+            }}>Apartment</button>
+          <button className={activeButton3 === 'house/villa' ? 'active' : ''}
+            onClick={() => {
+              setresidential('house/villa');
+              handleButtonClick3('house/villa');
+              setformdata(initialdata);
+            }}>House/villa</button>
+          <button className={activeButton3 === 'plot' ? 'active' : ''}
+            onClick={() => {
+              setresidential('plot');
+              handleButtonClick3('plot');
+              setformdata(initialdata);
+            }}>Plot</button>
+          <button className={activeButton3 === 'builderfloor' ? 'active' : ''}
+            onClick={() => {
+              setresidential('builderfloor');
+              handleButtonClick3('builderfloor');
+              setformdata(initialdata);
+            }}>Builderfloor</button>
+          <button className={activeButton3 === 'farmhouse' ? 'active' : ''}
+            onClick={() => {
+              setresidential('farmhouse');
+              handleButtonClick3('farmhouse');
+              setformdata(initialdata);
+            }}>Farmhouse</button>
           {(residential === 'apartment' || residential === 'house/villa' || residential === 'builderfloor' || residential === 'farmhouse' || residential === 'plot') && (
             <>
-              <div>
-                <br></br>
+              <div className='container'>
                 <form onSubmit={handleSubmit}>
-                <label>Country:</label>
-                <select
-                        name='country'
-                        onChange={handleChange}
-                        value={formdata.country}
-                        required
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Country:</label>
+                    <select
+                      className='fieldvalue'
+                      name='country'
+                      onChange={handleChange}
+                      value={formdata.country}
+                      required
 
-                      >
-                        <option value='india'>India</option>
-                        <option value='uae'>UAE
-                        </option>
-                        <option value='qatar'>QATAR</option>
-                </select>
-                <label>City:</label>
-                <select
-                        name='city'
-                        onChange={handleChange}
-                        value={formdata.city}
-                        required
+                    >
+                      <option value='india'>India</option>
+                      <option value='uae'>UAE
+                      </option>
+                      <option value='qatar'>QATAR</option>
+                    </select>
+                    <label className='fieldname'>City:</label>
+                    <select
+                      className='fieldvalue'
+                      name='city'
+                      onChange={handleChange}
+                      value={formdata.city}
+                      required
 
-                      >
-                        {formdata.country ==='india' && (
+                    >
+                      {formdata.country === 'india' && (
                         <>
-                         <option value='noida'>Noida</option>
-                        <option value='gurgaon'>Gurgaon
-                        </option>
-                        <option value='greaternoida'>Greater Noida</option>
-                        <option value='ghaziabad'>Ghaziabad</option>
-                        <option value='delhi'>Delhi</option>
-                        <option value='faridabad'>Faridabad</option>
+                          <option value='noida'>Noida</option>
+                          <option value='gurgaon'>Gurgaon
+                          </option>
+                          <option value='greaternoida'>Greater Noida</option>
+                          <option value='ghaziabad'>Ghaziabad</option>
+                          <option value='delhi'>Delhi</option>
+                          <option value='faridabad'>Faridabad</option>
                         </>
-                        )}
-                        {formdata.country ==='uae' && (
+                      )}
+                      {formdata.country === 'uae' && (
                         <>
-                         <option value='dubai'>Dubai</option>
+                          <option value='dubai'>Dubai</option>
                         </>
-                        )}
-                        {formdata.country ==='qatar' && (
+                      )}
+                      {formdata.country === 'qatar' && (
                         <>
-                         <option value='doha'>Doha</option>
+                          <option value='doha'>Doha</option>
                         </>
-                        )}
-                  </select>
-                  <br></br>
-                  <label>locality:</label>
-                  <input type='text' name='locality' onChange={handleChange} value={formdata.locality}></input>
-                  <br></br>
-                  <label>Property Name:</label>
-                  <input type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
-                  </input>
-                  <br></br>
-                  <label>Property Address:</label>
-                  <input type='text' name='address' onChange={handleChange} value={formdata.address} required>
-                  </input>
-                  <br></br>
-                  {residential !== 'plot' && (
-                    <>
-                      <label>Configuration:</label>
-                      <select
-                        name='configuration'
-                        onChange={handleChange}
-                        value={formdata.configuration}
-                        required
-
-                      >
-                        <option value='1BHK'>1BHK</option>
-                        <option value='1.5BHK'>1.5BHK</option>
-                        <option value='2BHK'>2BHK</option>
-                        <option value='2.5BHK'>2.5BHK</option>
-                        <option value='3BHK'>3BHK</option>
-                        <option value='4BHK'>4BHK</option>
-                        <option value='5BHK'>5BHK</option>
-                        <option value='6BHK'>6BHK</option>
-                        <option value='6+ BHK'>6+ BHK</option>
-                      </select>
-                      <label>Area Detail(in sq.ft) : </label>
-                      <input type='number' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
-                      </input>
-                      <select
-                        name='areatype'
-                        onChange={handleChange}
-                        value={formdata.areatype}
-                        required
-                      >
-                        <option value='Super Built-up Area'>Super Built Up Area</option>
-                        <option value='Built-up area'>Built-up Area</option>
-                        <option value='Carpet Area'>Carpet Area</option>
-                      </select>
-                      <br></br>
-                      <label>No of Bathroom:</label>
-                      <select
-                        name='bathroom'
-                        onChange={handleChange}
-                        value={formdata.bathroom}
-                        required
-                      >
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                        <option value='5+'>5+</option>
-                      </select>
-                      <label>No of Balcony:</label>
-                      <select
-                        name='balcony'
-                        onChange={handleChange}
-                        value={formdata.balcony}
-                        required
-                      >
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                        <option value='5+'>5+</option>
-                      </select>
-                    </>
-                  )}
-                  {residential === 'plot' && (
-                    <>
-                      <label>Plot Dimesion:</label>
-                      <input type='number' name='length' onChange={handleChange} value={formdata.length} placeholder='Length' required>
-                      </input>
-                      ft.
-                      X
-                      
-                      <input type='number' name='width' onChange={handleChange} value={formdata.width} placeholder='width' required>
-                
-                      </input>
-                      ft.
-                    </>
-                  )}
-
-                  <br></br>
-                  <label>Description : </label>
-                  <textarea name="description" value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
-                  <br></br>
-
-                  {residential !== 'plot' && (
-                    <>
-                      <label>Furnish Type:</label>
-                      <select
-                        name='furnishtype'
-                        onChange={handleChange}
-                        value={formdata.furnishtype}
-                        required
-                      >
-                        <option value='Fully furnished'>Fully furnished</option>
-                        <option value='Semi furnished'>Semi furnished</option>
-                        <option value='Un furnished'>Un furnished</option>
-                      </select>
-
-                      <label>Construction Status</label>
-                      <select
-                        name='constructionstatus'
-                       
-                        value={formdata.constructionstatus}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value='Ready to Move'>Ready to Move</option>
-                        <option value='Under-Construction'>Under Construction</option>
-                      </select>
-                      <label> possesion date</label>
-                      <input type='date' name='propertydate' value={formdata.propertydate} onChange={handleChange}></input>
-                      <br></br>
-                      <label>Floor no:</label>
-                      <input type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
-
-                      <label>Total Floor:</label>
-                      <input type='number' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
-                      <br></br>
-                    </>
-                  )}
-
-
-                  <br></br>
-                  <label>RERA ID:</label>
-                  <input type='text' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
-
-                  {residential !== 'plot' && (
-                    <>
-                      <label>Property Facing:</label>
-                      <select
-                        name='propertyfacing'
-                        onChange={handleChange}
-                        value={formdata.propertyfacing}
-                        required
-                      >
-                        <option value='North'>North</option>
-                        <option value='South'>South</option>
-                        <option value='East'>East</option>
-                        <option value='West'>West</option>
-                        <option value='North-East'>North-East</option>
-                        <option value='North-West'>North-West</option>
-                        <option value='South-East'>South-East</option>
-                        <option value='South-West'>South-West</option>
-                      </select>
-                      <label>Maintenance charge per month:</label>
-                      <input type='number' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
-                      <br></br>
-                    </>
-                  )}
-
-
-
-                  <select
-                    name='moneytype'
-                    onChange={handleChange}
-                    value={formdata.moneytype}
-                    required
-                  >
-                    <option value='Rupees' >Rupees</option>
-                    <option value='AED'>Dubai - AED</option>
-                    <option value='Riyal'>Riyal-Qutar</option>
-                  </select>
-                  <label>Price:</label>
-                  <input type='number' name='price' onChange={handleChange} value={formdata.price} required></input>
-                  <select
-                    name='range'
-                    onChange={handleChange}
-                    value={formdata.range}
-                    required
-                  >
-                    <option value='Lakh'>Lakhs</option>
-                    <option value='Crore'>Crore</option>
-                  </select>
-                  <br></br>
-                  <label>Token amount:</label>
-                  <input type='number' name='tokenamount' onChange={handleChange} value={formdata.tokenamount}></input>
-                  <br></br>
-                  {residential !== 'plot' && (
-                    <>
-                      <label>Floor Plan:</label>
-                      <input type="file" name="floorplan" onChange={handleFloorplanChange} multiple accept=".jpg,.png,.pdf" />
-                      <br />
-                    </>
-                  )}
-
-                  <label>Upload Photos:</label>
-                  <input type="file" name="photos" multiple onChange={handlePhotosChange} accept=".jpg,.png" />
-                  <br />
-                  <br></br>
-                  {residential !== 'plot' && (
-                    <>
-                      <label>Amenties</label>
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="AirConditioner"
-                        onChange={handleChange}
-                      />
-                      Air Conditioner
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Cable Tv"
-                        onChange={handleChange}
-                      />
-                      Cable TV
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="wifi"
-                        onChange={handleChange}
-                      />
-                      Wifi
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Dishwasher"
-                        onChange={handleChange}
-                      />
-                      Dishwasher
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Heating"
-                        onChange={handleChange}
-                      />
-                      Heating
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Lift"
-                        onChange={handleChange}
-                      />
-                      Lift
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Intercomm Facility"
-                        onChange={handleChange}
-                      />
-                      Intercomm Facility
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="MicroWave"
-                        onChange={handleChange}
-                      />
-                      Microwave
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Park"
-                        onChange={handleChange}
-                      />
-                      Park
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Parking"
-                        onChange={handleChange}
-                      />
-                      parking
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Guest Parking"
-                        onChange={handleChange}
-                      />
-                      Guest Parking
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Security"
-                        onChange={handleChange}
-                      />
-                      Security
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="playarea"
-                        onChange={handleChange}
-                      />
-                      playarea
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="CCTV"
-                        onChange={handleChange}
-                      />
-                      CCTV
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="powerbackup"
-                        onChange={handleChange}
-                      />
-                      powerbackup
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="gas pipeline"
-                        onChange={handleChange}
-                      />
-                      Gas pipeline
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="gym"
-                        onChange={handleChange}
-                      />
-                      GYM
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Swimmingpool"
-                        onChange={handleChange}
-                      />
-                      Swimming pool
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="multipurpose court"
-                        onChange={handleChange}
-                      />
-                      multipurpose court
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="multipurpose hall"
-                        onChange={handleChange}
-                      />
-                      multipurpose hall
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="gas pipeline"
-                        onChange={handleChange}
-                      />
-
-                      chimmney
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Modular kitchen"
-                        onChange={handleChange}
-                      />
-                      Modular kitchen
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Refrigetor"
-                        onChange={handleChange}
-                      />
-                      Refrigetor
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="rear lawn"
-                        onChange={handleChange}
-                      />
-                      rear lawn
-                      <br></br>
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Front lawn"
-                        onChange={handleChange}
-                      />
-                      Front lawn
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="ev charge"
-                        onChange={handleChange}
-                      />
-                      ev charge
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="club house"
-                        onChange={handleChange}
-                      />
-                      club house
-
-                    </>
-                  )}
-                  {
-                    residential === 'plot' && (
-                      <>
-                        <label>Amenties </label>
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="park"
-                          onChange={handleChange}
-                        />
-                        Park
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="CCTV"
-                          onChange={handleChange}
-                        />
-
-                        CCTV
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="parking"
-                          onChange={handleChange}
-                        />
-                        Parking
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Security"
-                          onChange={handleChange}
-                        />
-                        Security
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="play area"
-                          onChange={handleChange}
-                        />
-                        Play Area
-                        <br></br>
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="guest parking"
-                          onChange={handleChange}
-                        />
-                        Guest Parking
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="power backup"
-                          onChange={handleChange}
-                        />
-                        Power Backup
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gas pipeline"
-                          onChange={handleChange}
-                        />
-                        gas pipeline
-                      </>
-                    )
-                  }
-                  <br></br>
-                  <h3>Distance</h3>
-                  <label>Metro</label><input type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Bus</label><input type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>School</label><input type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Hospital</label><input type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Mall</label><input type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Resturant: </label><input type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Cinema: </label><input type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <button type='submit'>submit</button>
-                </form>
-              </div>
-            </>
-          )}
-        </>
-      )}
-      {
-        category === 'residential' && resitype === 'rent' && (
-          <>
-            <h1>rent</h1>
-            <br></br>
-            <button onClick={resihandler1}>Apartment</button>
-            <button onClick={resihandler2} >House/villa</button>
-
-            <button onClick={resihandler4}>Builderfloor</button>
-            <button onClick={resihandler5}>farmhouse</button>
-            {(residential === 'apartment' || residential === 'house/villa' || residential === 'builderfloor' || residential === 'farmhouse') && (
-              <>
-                <div>
-                  <br></br>
-                  <form onSubmit={handleSubmit}>
-                  <label>Country:</label>
-                <select
-                        name='country'
-                        onChange={handleChange}
-                        value={formdata.country}
-                        required
-
-                      >
-                        <option value='india'>India</option>
-                        <option value='uae'>UAE
-                        </option>
-                        <option value='qatar'>QATAR</option>
-                </select>
-                <label>City:</label>
-                <select
-                        name='city'
-                        onChange={handleChange}
-                        value={formdata.city}
-                        required
-
-                      >
-                        {formdata.country ==='india' && (
-                        <>
-                         <option value='noida'>Noida</option>
-                        <option value='gurgaon'>Gurgaon
-                        </option>
-                        <option value='greaternoida'>Greater Noida</option>
-                        <option value='ghaziabad'>Ghaziabad</option>
-                        <option value='delhi'>Delhi</option>
-                        <option value='faridabad'>Faridabad</option>
-                        </>
-                        )}
-                        {formdata.country ==='uae' && (
-                        <>
-                         <option value='dubai'>Dubai</option>
-                        </>
-                        )}
-                        {formdata.country ==='qatar' && (
-                        <>
-                         <option value='doha'>Doha</option>
-                        </>
-                        )}
-                  </select>
-                  <br></br>
-                    <label>locality:</label>
-                    <input type='text' name='locality' onChange={handleChange} value={formdata.locality}></input>
-                    <br></br>
-                    <label>Property Name:</label>
-                    <input type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
+                      )}
+                    </select>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>locality:</label>
+                    <input type='text' className='fieldvalue' placeholder='Enter locality' name='locality' onChange={handleChange} value={formdata.locality}></input>
+                    <label className='fieldname'>Pincode:</label>
+                    <input type='text' className='fieldvalue' placeholder='Enter Pincode' name='pincode' onChange={handleChange} value={formdata.pincode}></input>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Property Name:</label>
+                    <input className='fieldvalue2' placeholder='Enter Property Name' type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
                     </input>
-                    <br></br>
-                    <label>Property Address:</label>
-                    <input type='text' name='address' onChange={handleChange} value={formdata.address} required>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Property Address:</label>
+                    <input className='fieldvalue2' type='text' placeholder='Enter Property address' name='address' onChange={handleChange} value={formdata.address} required>
                     </input>
-                    <br></br>
-                    {residential !== 'plot' && (
-                      <>
-                        <label>Configuration:</label>
+                  </div>
+                  {residential !== 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Configuration:</label>
                         <select
+                          className='fieldvalue'
                           name='configuration'
                           onChange={handleChange}
                           value={formdata.configuration}
@@ -888,10 +392,11 @@ function Form() {
                           <option value='6BHK'>6BHK</option>
                           <option value='6+ BHK'>6+ BHK</option>
                         </select>
-                        <label>Area Detail(in sq.ft) : </label>
-                        <input type='number' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
+                        <label className='fieldname'>Area Detail(in sq.ft) : </label>
+                        <input type='number' className='fieldvalue' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
                         </input>
                         <select
+                          className='fieldvalue'
                           name='areatype'
                           onChange={handleChange}
                           value={formdata.areatype}
@@ -901,9 +406,14 @@ function Form() {
                           <option value='Built-up area'>Built-up Area</option>
                           <option value='Carpet Area'>Carpet Area</option>
                         </select>
-                        <br></br>
-                        <label>No of Bathroom:</label>
+                      </div>
+
+
+
+                      <div className='fieldbox'>
+                        <label className='fieldname'>No of Bathroom:</label>
                         <select
+                          className='fieldvalue'
                           name='bathroom'
                           onChange={handleChange}
                           value={formdata.bathroom}
@@ -916,8 +426,9 @@ function Form() {
                           <option value='5'>5</option>
                           <option value='5+'>5+</option>
                         </select>
-                        <label>No of Balcony:</label>
+                        <label className='fieldname'>No of Balcony:</label>
                         <select
+                          className='fieldvalue'
                           name='balcony'
                           onChange={handleChange}
                           value={formdata.balcony}
@@ -930,28 +441,36 @@ function Form() {
                           <option value='5'>5</option>
                           <option value='5+'>5+</option>
                         </select>
-                      </>
-                    )}
-                    {residential === 'plot' && (
-                      <>
-                        <label>Plot Dimesion:</label>
-                        <input type='number' name='length' onChange={handleChange} value={formdata.length} placeholder='Length' required>
+                      </div>
+                    </>
+                  )}
+                  {residential === 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Plot Dimesion:</label>
+                        <input type='number' className='fieldvalue' name='length in ft.' onChange={handleChange} value={formdata.length} placeholder='Length' required>
                         </input>
                         X
-                        <input type='number' name='width' onChange={handleChange} value={formdata.width} placeholder='width' required>
+
+                        <input type='number' className='fieldvalue' name='width in ft.' onChange={handleChange} value={formdata.width} placeholder='width' required>
+
                         </input>
-                      </>
-                    )}
 
-                    <br></br>
-                    <label>Description : </label>
-                    <textarea name="description" value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
-                    <br></br>
+                      </div>
+                    </>
+                  )}
 
-                    {residential !== 'plot' && (
-                      <>
-                        <label>Furnish Type:</label>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Description</label>
+                    <textarea className='fieldvalue3' name="description" placeholder='Tell Something About Your Property' value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
+                  </div>
+
+                  {residential !== 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Furnish Type:</label>
                         <select
+                          className='fieldvalue'
                           name='furnishtype'
                           onChange={handleChange}
                           value={formdata.furnishtype}
@@ -961,29 +480,55 @@ function Form() {
                           <option value='Semi furnished'>Semi furnished</option>
                           <option value='Un furnished'>Un furnished</option>
                         </select>
-
-
                         <br></br>
-                        <label>Floor no:</label>
-                        <input type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
+                        <label className='fieldname'>Construction Status</label>
+                        <select
+                          name='constructionstatus'
+                          className='fieldvalue'
+                          value={formdata.constructionstatus}
+                          onChange={handleChange}
+                          required
+                        >
+                          <option value='Ready to Move'>Ready to Move</option>
+                          <option value='Under-Construction'>Under Construction</option>
+                        </select>
+                        <label className='fieldname'> possesion date</label>
+                        <input className='fieldvalue' type='date' name='propertydate' value={formdata.propertydate} onChange={handleChange}></input>
+                      </div>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Floor no:</label>
+                        <input className='fieldvalue' type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
 
-                        <label>Total Floor:</label>
-                        <input type='number' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
-                        <br></br>
-                      </>
-                    )}
-                    <br></br>
-                    <label></label>
+                        <label className='fieldname'>Total Floor:</label>
+                        <input type='number' className='fieldvalue' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
 
-                    <br></br>
-                    <label>RERA ID:</label>
-                    <input type='text' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
+                      </div>
+                    </>
+                  )}
 
-                    {residential !== 'plot' && (
-                      <>
-                        <label>Property Facing:</label>
+
+                  {residential === 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname' >RERA ID:</label>
+                        <input type='text' className='fieldvalue2' placeholder=' example UPRERAPRJ72xx' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
+                        <br />
+                      </div>
+                    </>
+                  )}
+
+
+                  {residential !== 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname' >RERA ID:</label>
+                        <input type='text' className='fieldvalue2' placeholder=' example UPRERAPRJ72xx' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
+                        <br />
+                        <br />
+                        <label className='fieldname'>Property Facing:</label>
                         <select
                           name='propertyfacing'
+                          className='fieldvalue'
                           onChange={handleChange}
                           value={formdata.propertyfacing}
                           required
@@ -997,13 +542,34 @@ function Form() {
                           <option value='South-East'>South-East</option>
                           <option value='South-West'>South-West</option>
                         </select>
-                        <label>Maintenance charge per month:</label>
-                        <input type='number' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
-                        <br></br>
-                      </>
-                    )}
 
+                        <label className='fieldname'>Maintenance charge per month:</label>
+                        <input type='number' className='fieldvalue' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
+                        <br></br>
+                      </div>
+                    </>
+                  )}
+
+
+                  <div className='fieldbox'>
+
+                    <label className='fieldname'>Price:</label>
+                    <input type='number' className='fieldvalue' name='price' onChange={handleChange} value={formdata.price} required></input>
                     <select
+                      className='fieldvalue'
+                      name='pricerange'
+                      onChange={handleChange}
+                      value={formdata.pricerange}
+                      required
+                    >
+
+                      <option value='Lakh'>Lakhs</option>
+                      <option value='Crore'>Crore</option>
+                      <option value='million'>Million</option>
+                      <option value='billion'>Billion</option>
+                    </select>
+                    <select
+                      className='fieldvalue'
                       name='moneytype'
                       onChange={handleChange}
                       value={formdata.moneytype}
@@ -1013,372 +579,211 @@ function Form() {
                       <option value='AED'>Dubai - AED</option>
                       <option value='Riyal'>Riyal-Qutar</option>
                     </select>
-                    <label>Montly Rent Price :</label>
-                    <input type='number' name='price' onChange={handleChange} value={formdata.price} required></input>
-                    <select
-                      name='range'
-                      onChange={handleChange}
-                      value={formdata.range}
-                      required
-                    >
-                      <option value='thousand'>Thousand</option>
-                      <option value='Lakh'>Lakhs</option>
-                      <option value='Crore'>Crore</option>
-                      <option value='million'>million</option>
-                      <option value='billion'>billion</option>
-                    </select>
-                    <br></br>
-                    <label>Security amount:</label>
-                    <input type='number' name='secuuritydeposit' onChange={handleChange} value={formdata.secuuritydeposit}></input>
-                    <br></br>
-                    {residential !== 'plot' && (
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Token amount:</label>
+                    <input type='number' className='fieldvalue' name='tokenamount' onChange={handleChange} value={formdata.tokenamount}></input>
+                  </div>
+
+                  {residential !== 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Amenities</label>
+                        <div className='checkbox-group'>
+                          {[
+                            { name: 'Air Conditioner', icon: <TbAirConditioning /> },
+                            { name: 'Cable Tv', icon: <FaSatelliteDish /> },
+                            { name: 'Wifi', icon: <FaWifi /> },
+                            { name: 'Dishwasher', icon: <LuUtensilsCrossed /> },
+                            { name: 'Heating', icon: <PiThermometerHotBold /> },
+                            { name: 'Lift', icon: <GrElevator /> },
+                            { name: 'Intercomm Facility', icon: <LiaIntercom /> },
+                            { name: 'Microwave', icon: <MdMicrowave /> },
+                            { name: 'Park', icon: <PiPark /> },
+                            { name: 'Parking', icon: <LuParkingCircle /> },
+                            { name: 'Guest Parking', icon: <RiParkingBoxLine /> },
+                            { name: 'Security', icon: <MdSecurity /> },
+                            { name: 'Play Area', icon: <GiKidSlide /> },
+                            { name: 'CCTV', icon: <BiCctv /> },
+                            { name: 'Power Backup', icon: <ImPower /> },
+                            { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                            { name: 'Gym', icon: <GiWeightLiftingUp /> },
+                            { name: 'Swimming Pool', icon: <FaPersonSwimming /> },
+                            { name: 'Multipurpose Court', icon: <PiCourtBasketball /> },
+                            { name: 'Multipurpose Hall', icon: <TbBuildingBank /> },
+                            { name: 'Chimney', icon: <GiChimney /> },
+                            { name: 'Modular Kitchen', icon: <FaKitchenSet /> },
+                            { name: 'Refrigerator', icon: <TbFridge /> },
+                            { name: 'Rear Lawn', icon: <GiGrassMushroom /> },
+                            { name: 'Front Lawn', icon: <GiGrass /> },
+                            { name: 'EV Charge', icon: <FaChargingStation /> },
+                            { name: 'Club House', icon: <PiWarehouseLight /> }
+                          ].map((amenity, index) => (
+                            <label key={index} className='custom-checkbox'>
+                              <input
+                                type="checkbox"
+                                name="amenities"
+                                value={amenity.name}
+                                onChange={handleChange}
+                              />
+                              <p className='fieldname2'>
+                                {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                              </p>
+                              <span className='checkmark'></span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  {
+                    residential === 'plot' && (
                       <>
-                        <label>Floor Plan:</label>
-                        <input type="file" name="floorplan" onChange={handleFloorplanChange} multiple accept=".jpg,.png,.pdf" />
-                        <br />
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Amenities</label>
+                          <div className='checkbox-group'>
+                            {[
+                              { name: 'Park', icon: <PiPark /> },
+                              { name: 'Parking', icon: <LuParkingCircle /> },
+                              { name: 'Security', icon: <MdSecurity /> },
+                              { name: 'Play Area', icon: <GiKidSlide /> },
+                              { name: 'CCTV', icon: <BiCctv /> },
+                              { name: 'Power Backup', icon: <ImPower /> },
+                              { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                            ].map((amenity, index) => (
+                              <label key={index} className='custom-checkbox'>
+                                <input
+                                  type="checkbox"
+                                  name="amenities"
+                                  value={amenity.name}
+                                  onChange={handleChange}
+                                />
+                                <p className='fieldname2'>
+                                  {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                                </p>
+                                <span className='checkmark'></span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
                       </>
-                    )}
+                    )
+                  }
+                  <div className='fieldbox'>
+                    <h1 className='fieldname'>Distance</h1>
+                    <div className='distancebox'>
+                      <label className='fieldname'>Metro</label><input className='fieldvalue fieldvalue8' type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
 
-                    <label>Upload Photos:</label>
-                    <input type="file" name="photos" multiple onChange={handlePhotosChange} accept=".jpg,.png" />
-                    <br />
-                    <br></br>
-                    {residential !== 'plot' && (
-                      <>
-                        <label>Amenties</label>
-                        <br></br>
+                      <label className='fieldname'>Bus</label><input className='fieldvalue fieldvalue8' type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>School</label><input className='fieldvalue fieldvalue8' type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Hospital</label><input className='fieldvalue fieldvalue8' type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Mall</label><input className='fieldvalue fieldvalue8' type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Resturant: </label><input className='fieldvalue fieldvalue8' type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Cinema: </label><input className='fieldvalue fieldvalue8' type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
+
+                    </div>
+                  </div>
+                  {residential !== 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Floor Plan:</label>
                         <input
-                          type="checkbox"
-                          name="amenities"
-                          value="AirConditioner"
-                          onChange={handleChange}
+                          className='fieldvalue4'
+                          type="file"
+                          name="floorplan"
+                          id="floorplan"
+                          onChange={handleFloorplanChange}
+                          multiple
+                          accept=".jpg,.png,.pdf"
                         />
-                        Air Conditioner
+                        <label htmlFor="floorplan" className='custom-file-input'>
+                          Choose Floor Plan
+                        </label>
 
+                        <label className='fieldname'>Upload Photos:</label>
                         <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Cable Tv"
-                          onChange={handleChange}
+                          className='fieldvalue4'
+                          type="file"
+                          name="photos"
+                          id="photos"
+                          onChange={handlePhotosChange}
+                          multiple
+                          accept=".jpg,.png"
                         />
-                        Cable TV
-
+                        <label htmlFor="photos" className='custom-file-input'>
+                          Choose Photos
+                        </label>
+                      </div>
+                    </>
+                  )}
+                  {residential === 'plot' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Upload Photos:</label>
                         <input
-                          type="checkbox"
-                          name="amenities"
-                          value="wifi"
-                          onChange={handleChange}
+                          className='fieldvalue4 '
+                          type="file"
+                          name="photos"
+                          id="photos"
+                          onChange={handlePhotosChange}
+                          multiple
+                          accept=".jpg,.png"
                         />
-                        Wifi
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Dishwasher"
-                          onChange={handleChange}
-                        />
-                        Dishwasher
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Heating"
-                          onChange={handleChange}
-                        />
-                        Heating
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Lift"
-                          onChange={handleChange}
-                        />
-                        Lift
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Intercomm Facility"
-                          onChange={handleChange}
-                        />
-                        Intercomm Facility
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="MicroWave"
-                          onChange={handleChange}
-                        />
-                        Microwave
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Park"
-                          onChange={handleChange}
-                        />
-                        Park
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Parking"
-                          onChange={handleChange}
-                        />
-                        parking
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Guest Parking"
-                          onChange={handleChange}
-                        />
-                        Guest Parking
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Security"
-                          onChange={handleChange}
-                        />
-                        Security
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="playarea"
-                          onChange={handleChange}
-                        />
-                        playarea
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="CCTV"
-                          onChange={handleChange}
-                        />
-                        CCTV
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="powerbackup"
-                          onChange={handleChange}
-                        />
-                        powerbackup
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gas pipeline"
-                          onChange={handleChange}
-                        />
-                        Gas pipeline
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gym"
-                          onChange={handleChange}
-                        />
-                        GYM
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Swimmingpool"
-                          onChange={handleChange}
-                        />
-                        Swimming pool
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="multipurpose court"
-                          onChange={handleChange}
-                        />
-                        multipurpose court
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="multipurpose hall"
-                          onChange={handleChange}
-                        />
-                        multipurpose hall
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gas pipeline"
-                          onChange={handleChange}
-                        />
-
-                        chimmney
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Modular kitchen"
-                          onChange={handleChange}
-                        />
-                        Modular kitchen
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Refrigetor"
-                          onChange={handleChange}
-                        />
-                        Refrigetor
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="rear lawn"
-                          onChange={handleChange}
-                        />
-                        rear lawn
-                        <br></br>
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Front lawn"
-                          onChange={handleChange}
-                        />
-                        Front lawn
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="ev charge"
-                          onChange={handleChange}
-                        />
-                        ev charge
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="club house"
-                          onChange={handleChange}
-                        />
-                        club house
-
-                      </>
-                    )}
-                    {
-                      residential === 'plot' && (
-                        <>
-                          <label>Amenties </label>
-                          <br></br>
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="park"
-                            onChange={handleChange}
-                          />
-                          Park
-                          <br></br>
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="CCTV"
-                            onChange={handleChange}
-                          />
-
-                          CCTV
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="parking"
-                            onChange={handleChange}
-                          />
-                          Parking
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="Security"
-                            onChange={handleChange}
-                          />
-                          Security
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="play area"
-                            onChange={handleChange}
-                          />
-                          Play Area
-                          <br></br>
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="guest parking"
-                            onChange={handleChange}
-                          />
-                          Guest Parking
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="power backup"
-                            onChange={handleChange}
-                          />
-                          Power Backup
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="gas pipeline"
-                            onChange={handleChange}
-                          />
-                          gas pipeline
-                        </>
-                      )
-                    }
-                    <br></br>
-                    <h3>Distance</h3>
-                    <label>Metro</label><input type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Bus</label><input type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>School</label><input type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Hospital</label><input type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Mall</label><input type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Resturant: </label><input type='number' name='resturant'   value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Cinema: </label><input type='number' name='cinema' value={formdata.cinema}  onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <button type='submit'>submit</button>
-                  </form>
-                </div>
-              </>
-            )}
-          </>
-        )
-      }
-      {resitype === 'sale' && category === 'commercial' && (
-        <>
-          <button onClick={commhandler1}>Office Space</button>
-          <button onClick={commhandler2} >Shop</button>
-          <button onClick={commhandler3} >Land</button>
-          <button onClick={commhandler4}>CoWorking Space</button>
-          <button onClick={commhandler5}>Showroom</button>
-          <h1>Sale - commercial</h1>
-          {(commercial === 'officespace' || commercial === 'shop' || commercial === 'coworkingspace' || commercial === 'showroom' || commercial === 'land') && (
-            <>
-              <div>
-                <br></br>
-                <form onSubmit={handleSubmit}>
-                <label>Country:</label>
-                <select
+                        <label htmlFor="photos" className='custom-file-input'>
+                          Choose Photos
+                        </label>
+                      </div>
+                    </>
+                  )}
+                  <br></br>
+                  <button type='submit' className='btn2'>submit</button>
+                </form>
+              </div>
+            </>
+          )}
+        </>
+      )}
+      {
+        category === 'residential' && resitype === 'rent' && (
+          <>
+            <button className={activeButton3 === 'apartment' ? 'active' : ''}
+              onClick={() => {
+                setresidential('apartment');
+                handleButtonClick3('apartment');
+                setformdata(initialdata);
+              }}>Apartment</button>
+            <button className={activeButton3 === 'house/villa' ? 'active' : ''}
+              onClick={() => {
+                setresidential('house/villa');
+                handleButtonClick3('house/villa');
+                setformdata(initialdata);
+              }}>House/villa</button>
+            <button className={activeButton3 === 'builderfloor' ? 'active' : ''}
+              onClick={() => {
+                setresidential('builderfloor');
+                handleButtonClick3('builderfloor');
+                setformdata(initialdata);
+              }}>Builderfloor</button>
+            <button className={activeButton3 === 'farmhouse' ? 'active' : ''}
+              onClick={() => {
+                setresidential('farmhouse');
+                handleButtonClick3('farmhouse');
+                setformdata(initialdata);
+              }}>Farmhouse</button>
+            {(residential === 'apartment' || residential === 'house/villa' || residential === 'builderfloor' || residential === 'farmhouse') && (
+              <>
+                <div className='container'>
+                  <br></br>
+                  <form onSubmit={handleSubmit}>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Country:</label>
+                      <select
+                        className='fieldvalue'
                         name='country'
                         onChange={handleChange}
                         value={formdata.country}
@@ -1389,590 +794,862 @@ function Form() {
                         <option value='uae'>UAE
                         </option>
                         <option value='qatar'>QATAR</option>
-                </select>
-                <label>City:</label>
-                <select
+                      </select>
+                      <label className='fieldname'>City:</label>
+                      <select
+                        className='fieldvalue'
                         name='city'
                         onChange={handleChange}
                         value={formdata.city}
                         required
 
                       >
-                        {formdata.country ==='india' && (
-                        <>
-                         <option value='noida'>Noida</option>
-                        <option value='gurgaon'>Gurgaon
-                        </option>
-                        <option value='greaternoida'>Greater Noida</option>
-                        <option value='ghaziabad'>Ghaziabad</option>
-                        <option value='delhi'>Delhi</option>
-                        <option value='faridabad'>Faridabad</option>
-                        </>
+                        {formdata.country === 'india' && (
+                          <>
+                            <option value='noida'>Noida</option>
+                            <option value='gurgaon'>Gurgaon
+                            </option>
+                            <option value='greaternoida'>Greater Noida</option>
+                            <option value='ghaziabad'>Ghaziabad</option>
+                            <option value='delhi'>Delhi</option>
+                            <option value='faridabad'>Faridabad</option>
+                          </>
                         )}
-                        {formdata.country ==='uae' && (
-                        <>
-                         <option value='dubai'>Dubai</option>
-                        </>
+                        {formdata.country === 'uae' && (
+                          <>
+                            <option value='dubai'>Dubai</option>
+                          </>
                         )}
-                        {formdata.country ==='qatar' && (
-                        <>
-                         <option value='doha'>Doha</option>
-                        </>
+                        {formdata.country === 'qatar' && (
+                          <>
+                            <option value='doha'>Doha</option>
+                          </>
                         )}
-                  </select>
-                  <br></br>
-                  <label>locality:</label>
-                  <input type='text' name='locality' onChange={handleChange} value={formdata.locality}></input>
-                  <br></br>
-                  <label>Property Name:</label>
-                  <input type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
-                  </input>
-                  <br></br>
-                  <label>Property Address:</label>
-                  <input type='text' name='address' onChange={handleChange} value={formdata.address} required>
-                  </input>
-                  <br></br>
+                      </select>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>locality:</label>
+                      <input type='text' className='fieldvalue' placeholder='Enter locality' name='locality' onChange={handleChange} value={formdata.locality}></input>
+                      <label className='fieldname'>Pincode:</label>
+                      <input type='text' className='fieldvalue' placeholder='Enter Pincode' name='pincode' onChange={handleChange} value={formdata.pincode}></input>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Property Name:</label>
+                      <input className='fieldvalue2' placeholder='Enter Property Name' type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
+                      </input>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Property Address:</label>
+                      <input className='fieldvalue2' type='text' placeholder='Enter Property address' name='address' onChange={handleChange} value={formdata.address} required>
+                      </input>
+                    </div>
+                    {residential !== 'plot' && (
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Configuration:</label>
+                          <select
+                            className='fieldvalue'
+                            name='configuration'
+                            onChange={handleChange}
+                            value={formdata.configuration}
+                            required
+
+                          >
+                            <option value='1BHK'>1BHK</option>
+                            <option value='1.5BHK'>1.5BHK</option>
+                            <option value='2BHK'>2BHK</option>
+                            <option value='2.5BHK'>2.5BHK</option>
+                            <option value='3BHK'>3BHK</option>
+                            <option value='4BHK'>4BHK</option>
+                            <option value='5BHK'>5BHK</option>
+                            <option value='6BHK'>6BHK</option>
+                            <option value='6+ BHK'>6+ BHK</option>
+                          </select>
+                          <label className='fieldname'>Area Detail(in sq.ft) : </label>
+                          <input type='number' className='fieldvalue' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
+                          </input>
+                          <select
+                            className='fieldvalue'
+                            name='areatype'
+                            onChange={handleChange}
+                            value={formdata.areatype}
+                            required
+                          >
+                            <option value='Super Built-up Area'>Super Built Up Area</option>
+                            <option value='Built-up area'>Built-up Area</option>
+                            <option value='Carpet Area'>Carpet Area</option>
+                          </select>
+                        </div>
 
 
-                  <label>Area Detail(in sq.ft) : </label>
-                  <input type='number' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
-                  </input>
-                  <select
-                    name='areatype'
-                    onChange={handleChange}
-                    value={formdata.areatype}
-                    required
-                  >
-                    <option value='Super Built-up-Area'>Super Built Up Area</option>
-                    <option value='Built-up area'>Built-up Area</option>
-                    <option value='Carpet Area'>Carpet Area</option>
-                  </select>
 
+                        <div className='fieldbox'>
+                          <label className='fieldname'>No of Bathroom:</label>
+                          <select
+                            className='fieldvalue'
+                            name='bathroom'
+                            onChange={handleChange}
+                            value={formdata.bathroom}
+                            required
+                          >
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='5+'>5+</option>
+                          </select>
+                          <label className='fieldname'>No of Balcony:</label>
+                          <select
+                            className='fieldvalue'
+                            name='balcony'
+                            onChange={handleChange}
+                            value={formdata.balcony}
+                            required
+                          >
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='5+'>5+</option>
+                          </select>
+                        </div>
+                      </>
+                    )}
 
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Description : </label>
+                      <textarea className='fieldvalue3' name="description" value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
+                    </div>
 
-                  {(commercial === 'land' || commercial==='shop') && (
-                    <>
+                    {residential !== 'plot' && (
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Furnish Type:</label>
+                          <select
+                            className='fieldvalue'
+                            name='furnishtype'
+                            onChange={handleChange}
+                            value={formdata.furnishtype}
+                            required
+                          >
+                            <option value='Fully furnished'>Fully furnished</option>
+                            <option value='Semi furnished'>Semi furnished</option>
+                            <option value='Un furnished'>Un furnished</option>
+                          </select>
+                          <br></br>
+                        </div>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Floor no:</label>
+                          <input className='fieldvalue' type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
+
+                          <label className='fieldname'>Total Floor:</label>
+                          <input type='number' className='fieldvalue' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
+
+                        </div>
+                      </>
+                    )}
+
+                    {residential !== 'plot' && (
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname' >RERA ID:</label>
+                          <input type='text' className='fieldvalue2' placeholder=' example UPRERAPRJ72xx' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
+                          <br />
+                          <br />
+                          <label className='fieldname'>Property Facing:</label>
+                          <select
+                            name='propertyfacing'
+                            className='fieldvalue'
+                            onChange={handleChange}
+                            value={formdata.propertyfacing}
+                            required
+                          >
+                            <option value='North'>North</option>
+                            <option value='South'>South</option>
+                            <option value='East'>East</option>
+                            <option value='West'>West</option>
+                            <option value='North-East'>North-East</option>
+                            <option value='North-West'>North-West</option>
+                            <option value='South-East'>South-East</option>
+                            <option value='South-West'>South-West</option>
+                          </select>
+
+                          <label className='fieldname'>Maintenance charge per month:</label>
+                          <input type='number' className='fieldvalue' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
+                          <br></br>
+                        </div>
+                      </>
+                    )}
+                    <div className='fieldbox'>
+
+                      <label className='fieldname'>Montly Rent Price :</label>
+                      <input type='number' className='fieldvalue' name='price' onChange={handleChange} value={formdata.price} required></input>
+                      <select
+                        name='pricerange'
+                        onChange={handleChange}
+                        value={formdata.pricerange}
+                        required
+                        className='fieldvalue'
+                      >
+                        <option value='thousand'>Thousand</option>
+                        <option value='Lakh'>Lakhs</option>
+                        <option value='Crore'>Crore</option>
+                        <option value='million'>million</option>
+                        <option value='billion'>billion</option>
+                      </select>
+                      <select
+                        className='fieldvalue'
+                        name='moneytype'
+                        onChange={handleChange}
+                        value={formdata.moneytype}
+                        required
+                      >
+                        <option value='Rupees' >Rupees</option>
+                        <option value='AED'>Dubai - AED</option>
+                        <option value='Riyal'>Riyal-Qutar</option>
+                      </select>
                       <br></br>
-                      <label>Plot Dimesion:</label>
-                      <input type='number' name='length' onChange={handleChange} value={formdata.length} placeholder='Length' required>
-                      </input>
-                      ft.
+                      <label className='fieldname'>Security amount:</label>
+                      <input type='number' className='fieldvalue' name='secuuritydeposit' onChange={handleChange} value={formdata.secuuritydeposit}></input>
+                    </div>
+                    {residential !== 'plot' && (
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Amenities</label>
+                          <div className='checkbox-group'>
+                            {[
+                              { name: 'Air Conditioner', icon: <TbAirConditioning /> },
+                              { name: 'Cable Tv', icon: <FaSatelliteDish /> },
+                              { name: 'Wifi', icon: <FaWifi /> },
+                              { name: 'Dishwasher', icon: <LuUtensilsCrossed /> },
+                              { name: 'Heating', icon: <PiThermometerHotBold /> },
+                              { name: 'Lift', icon: <GrElevator /> },
+                              { name: 'Intercomm Facility', icon: <LiaIntercom /> },
+                              { name: 'Microwave', icon: <MdMicrowave /> },
+                              { name: 'Park', icon: <PiPark /> },
+                              { name: 'Parking', icon: <LuParkingCircle /> },
+                              { name: 'Guest Parking', icon: <RiParkingBoxLine /> },
+                              { name: 'Security', icon: <MdSecurity /> },
+                              { name: 'Play Area', icon: <GiKidSlide /> },
+                              { name: 'CCTV', icon: <BiCctv /> },
+                              { name: 'Power Backup', icon: <ImPower /> },
+                              { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                              { name: 'Gym', icon: <GiWeightLiftingUp /> },
+                              { name: 'Swimming Pool', icon: <FaPersonSwimming /> },
+                              { name: 'Multipurpose Court', icon: <PiCourtBasketball /> },
+                              { name: 'Multipurpose Hall', icon: <TbBuildingBank /> },
+                              { name: 'Chimney', icon: <GiChimney /> },
+                              { name: 'Modular Kitchen', icon: <FaKitchenSet /> },
+                              { name: 'Refrigerator', icon: <TbFridge /> },
+                              { name: 'Rear Lawn', icon: <GiGrassMushroom /> },
+                              { name: 'Front Lawn', icon: <GiGrass /> },
+                              { name: 'EV Charge', icon: <FaChargingStation /> },
+                              { name: 'Club House', icon: <PiWarehouseLight /> }
+                            ].map((amenity, index) => (
+                              <label key={index} className='custom-checkbox'>
+                                <input
+                                  type="checkbox"
+                                  name="amenities"
+                                  value={amenity.name}
+                                  onChange={handleChange}
+                                />
+                                <p className='fieldname2'>
+                                  {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                                </p>
+                                <span className='checkmark'></span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    <div className='fieldbox'>
+                      <h1 className='fieldname'>Distance</h1>
+                      <div className='distancebox'>
+                        <label className='fieldname'>Metro</label><input className='fieldvalue fieldvalue8' type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
 
-                      X 
+                        <label className='fieldname'>Bus</label><input className='fieldvalue fieldvalue8' type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
 
-                      <input type='number' name='width' onChange={handleChange} value={formdata.width} placeholder='width' required>
-                      </input>
-                      ft.
+                        <label className='fieldname'>School</label><input className='fieldvalue fieldvalue8' type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Hospital</label><input className='fieldvalue fieldvalue8' type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Mall</label><input className='fieldvalue fieldvalue8' type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Resturant: </label><input className='fieldvalue fieldvalue8' type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Cinema: </label><input className='fieldvalue fieldvalue8' type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
+
+                      </div>
+                    </div>
+
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Floor Plan:</label>
+                      <input
+                        className='fieldvalue4'
+                        type="file"
+                        name="floorplan"
+                        id="floorplan"
+                        onChange={handleFloorplanChange}
+                        multiple
+                        accept=".jpg,.png,.pdf"
+                      />
+                      <label htmlFor="floorplan" className='custom-file-input'>
+                        Choose Floor Plan
+                      </label>
+
+                      <label className='fieldname'>Upload Photos:</label>
+                      <input
+                        className='fieldvalue4'
+                        type="file"
+                        name="photos"
+                        id="photos"
+                        onChange={handlePhotosChange}
+                        multiple
+                        accept=".jpg,.png"
+                      />
+                      <label htmlFor="photos" className='custom-file-input'>
+                        Choose Photos
+                      </label>
+                    </div>
+                    <button type='submit' className='btn2'>submit</button>
+                  </form>
+                </div>
+              </>
+            )}
+          </>
+        )
+      }
+      {resitype === 'sale' && category === 'commercial' && (
+        <>
+          <button className={activeButton4 === 'officespace' ? 'active' : ''}
+            onClick={() => {
+              setcommercial('officespace');
+              handleButtonClick4('officespace');
+            }}
+          >OfficeSpace</button>
+          <button className={activeButton4 === 'shop' ? 'active' : ''}
+            onClick={() => {
+              setcommercial('shop');
+              handleButtonClick4('shop');
+            }}
+          >Shop</button>
+          <button className={activeButton4 === 'land' ? 'active' : ''}
+            onClick={() => {
+              setcommercial('land');
+              handleButtonClick4('land');
+            }}
+          >Land</button>
+          <button className={activeButton4 === 'coworkingspace' ? 'active' : ''}
+            onClick={() => {
+              setcommercial('coworkingspace');
+              handleButtonClick4('coworkingspace');
+            }}
+          >CoWorkingSpace</button>
+          <button className={activeButton4 === 'showroom' ? 'active' : ''}
+            onClick={() => {
+              setcommercial('showroom');
+              handleButtonClick4('showroom');
+            }}
+          >Showroom</button>
+          {(commercial === 'officespace' || commercial === 'shop' || commercial === 'coworkingspace' || commercial === 'showroom' || commercial === 'land') && (
+            <>
+              <div className='container'>
+                <form onSubmit={handleSubmit}>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Country:</label>
+                    <select
+                      className='fieldvalue'
+                      name='country'
+                      onChange={handleChange}
+                      value={formdata.country}
+                      required
+
+                    >
+                      <option value='india'>India</option>
+                      <option value='uae'>UAE
+                      </option>
+                      <option value='qatar'>QATAR</option>
+                    </select>
+                    <label className='fieldname'>City:</label>
+                    <select
+                      className='fieldvalue'
+                      name='city'
+                      onChange={handleChange}
+                      value={formdata.city}
+                      required
+
+                    >
+                      {formdata.country === 'india' && (
+                        <>
+                          <option value='noida'>Noida</option>
+                          <option value='gurgaon'>Gurgaon
+                          </option>
+                          <option value='greaternoida'>Greater Noida</option>
+                          <option value='ghaziabad'>Ghaziabad</option>
+                          <option value='delhi'>Delhi</option>
+                          <option value='faridabad'>Faridabad</option>
+                        </>
+                      )}
+                      {formdata.country === 'uae' && (
+                        <>
+                          <option value='dubai'>Dubai</option>
+                        </>
+                      )}
+                      {formdata.country === 'qatar' && (
+                        <>
+                          <option value='doha'>Doha</option>
+                        </>
+                      )}
+                    </select>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>locality:</label>
+                    <input type='text' className='fieldvalue' placeholder='Enter locality' name='locality' onChange={handleChange} value={formdata.locality}></input>
+                    <label className='fieldname'>Pincode:</label>
+                    <input type='text' className='fieldvalue' placeholder='Enter Pincode' name='pincode' onChange={handleChange} value={formdata.pincode}></input>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Property Name:</label>
+                    <input className='fieldvalue2' placeholder='Enter Property Name' type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
+                    </input>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Property Address:</label>
+                    <input className='fieldvalue2' type='text' placeholder='Enter Property address' name='address' onChange={handleChange} value={formdata.address} required>
+                    </input>
+                  </div>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Area Detail(in sq.ft) : </label>
+                    <input className='fieldvalue' type='number' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
+                    </input>
+                    <select
+                      className='fieldvalue'
+                      name='areatype'
+                      onChange={handleChange}
+                      value={formdata.areatype}
+                      required
+                    >
+                      <option value='Super Built-up-Area'>Super Built Up Area</option>
+                      <option value='Built-up area'>Built-up Area</option>
+                      <option value='Carpet Area'>Carpet Area</option>
+                    </select>
+                  </div>
+
+
+                  {(commercial === 'land' || commercial === 'shop') && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Plot Dimesion:</label>
+                        <input type='number' className='fieldvalue' name='length in ft.' onChange={handleChange} value={formdata.length} placeholder='Length' required>
+                        </input>
+                        X
+
+                        <input type='number' className='fieldvalue' name='width in ft.' onChange={handleChange} value={formdata.width} placeholder='width' required>
+
+                        </input>
+
+                      </div>
                     </>
                   )}
 
-                  <br></br>
-                  <label>Description : </label>
-                  <textarea name="description" value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
-                  <br></br>
+                  <div className='fieldbox'>
+                    <label className='fieldname'>Description</label>
+                    <textarea className='fieldvalue3' name="description" placeholder='Tell Something About Your Property' value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
+                  </div>
 
                   {commercial !== 'land' && (
                     <>
-                      <label>Construction Status   </label>
-                      <select
-                        name='constructionstatus'
-                        onChange={handleChange}
-                        value={formdata.constructionstatus}
-                        required
-                      >
-                        <option value='Ready to Move'>Ready to Move</option>
-                        <option value='Under-Construction'>Under Construction</option>
-                      </select>
-                      <label>Furnish Type:</label>
-                      <select
-                        name='furnishtype'
-                        onChange={handleChange}
-                        value={formdata.furnishtype}
-                        required
-                      >
-                        <option value='Fully furnished'>Fully furnished</option>
-                        <option value='Semi furnished'>Semi furnished</option>
-                        <option value='Un furnished'>Un furnished</option>
-                      </select>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Furnish Type:</label>
+                        <select
+                          className='fieldvalue'
+                          name='furnishtype'
+                          onChange={handleChange}
+                          value={formdata.furnishtype}
+                          required
+                        >
+                          <option value='Fully furnished'>Fully furnished</option>
+                          <option value='Semi furnished'>Semi furnished</option>
+                          <option value='Un furnished'>Un furnished</option>
+                        </select>
+                        <br></br>
+                        <label className='fieldname'>Construction Status</label>
+                        <select
+                          name='constructionstatus'
+                          className='fieldvalue'
+                          value={formdata.constructionstatus}
+                          onChange={handleChange}
+                          required
+                        >
+                          <option value='Ready to Move'>Ready to Move</option>
+                          <option value='Under-Construction'>Under Construction</option>
+                        </select>
+                        <label className='fieldname'> possesion date</label>
+                        <input className='fieldvalue' type='date' name='propertydate' value={formdata.propertydate} onChange={handleChange}></input>
+                      </div>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Floor no:</label>
+                        <input className='fieldvalue' type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
 
+                        <label className='fieldname'>Total Floor:</label>
+                        <input type='number' className='fieldvalue' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
 
-                      <br></br>
-                      <label>Floor no:</label>
-                      <input type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
-
-                      <label>Total Floor:</label>
-                      <input type='number' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
-                      <br></br>
+                      </div>
                     </>
                   )}
-                  <br></br>
-                  <label></label>
+                  <div className='fieldbox'>
+                    <label className='fieldname' >RERA ID:</label>
+                    <input type='text' className='fieldvalue2' placeholder=' example UPRERAPRJ72xx' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
+                    <br />
+                    <br />
+                    <label className='fieldname'>Property Facing:</label>
+                    <select
+                      name='propertyfacing'
+                      className='fieldvalue'
+                      onChange={handleChange}
+                      value={formdata.propertyfacing}
+                      required
+                    >
+                      <option value='North'>North</option>
+                      <option value='South'>South</option>
+                      <option value='East'>East</option>
+                      <option value='West'>West</option>
+                      <option value='North-East'>North-East</option>
+                      <option value='North-West'>North-West</option>
+                      <option value='South-East'>South-East</option>
+                      <option value='South-West'>South-West</option>
+                    </select>
 
-                  <br></br>
-                  <label>RERA ID:</label>
-                  <input type='text' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
-                  <br></br>
+                    <label className='fieldname'>Maintenance charge per month:</label>
+                    <input type='number' className='fieldvalue' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
+                    <br></br>
+                  </div>
                   {commercial === 'land' && (
                     <>
-                      <label> Boundary Wall</label>
-                      <label>  Yes</label>
-                      <input
-                        type="radio"
-                        name="boundarywall"
-                        value='yes'
+                      <div className='fieldbox'>
+                        <label className='fieldname'> Boundary Wall</label>
+                        <label className='radio-container'>
+                          <span className='radio-label'>Yes</span>
+                          <input
 
-                        onChange={handleChange}
-                      />
-                      <label> No</label>
-                      <input
-                        type="radio"
-                        name="boundarywall"
-                        value='no'
+                            type="radio"
+                            name="boundarywall"
+                            value='yes'
 
-                        onChange={handleChange}
-                      ></input>
-                      <label>       No of open side</label>
-                      <select
-                        name='noofopenside'
-                       
-                        value={formdata.noofopenside}
-                        onChange={handleChange}
-                      >
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                      </select>
-                      <br></br>
-                      <label>Floor Allowed</label>
-                      <select
-                        name='floorallowed'
-                        onChange={handleChange}
-                        value={formdata.floorallowed}
-                      >
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                        <option value='6'>6</option>
-                        <option value='7'>7</option>
-                        <option value='7+'>7+</option>
-                      </select>
+                            onChange={handleChange}
+                          />
+                          <span className='radio-checkmark'></span>
+                        </label>
+                        <label className='radio-container'>
+                          <span className='radio-label'>No</span>
+                          <input
+
+                            type="radio"
+                            name="boundarywall"
+                            value='no'
+
+                            onChange={handleChange}
+                          />
+                          <span className='radio-checkmark'></span>
+                        </label>
+                        <br></br>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>       No of open side</label>
+                          <select
+                            name='noofopenside'
+                            className='fieldvalue'
+                            value={formdata.noofopenside}
+                            onChange={handleChange}
+                          >
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                          </select>
+                          <label className='fieldname'>Floor Allowed</label>
+                          <select
+                            className='fieldvalue'
+                            name='floorallowed'
+                            onChange={handleChange}
+                            value={formdata.floorallowed}
+                          >
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='6'>6</option>
+                            <option value='7'>7</option>
+                            <option value='7+'>7+</option>
+                          </select>
+                        </div>
+                      </div>
                     </>
 
                   )}
 
                   {commercial !== 'land' && (
                     <>
-                      <label>Property Facing:</label>
-                      <select
-                        name='propertyfacing'
-                        onChange={handleChange}
-                        value={formdata.propertyfacing}
-                        required
-                      >
-                        <option value='North'>North</option>
-                        <option value='South'>South</option>
-                        <option value='East'>East</option>
-                        <option value='West'>West</option>
-                        <option value='North-East'>North-East</option>
-                        <option value='North-West'>North-West</option>
-                        <option value='South-East'>South-East</option>
-                        <option value='South-West'>South-West</option>
-                      </select>
-                      <br></br>
-                      <label>Maintenance charge per month:</label>
-                      <input type='number' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
-                      <br></br>
-                      <label>Currently leased Out: </label>
-                      <label>  Yes</label>
-                      <input
-                        type="radio"
-                        name="leased"
-                        value='yes'
-                        checked={leased === "yes"}
-                        onChange={leasedchange1}
-                      />
-                      <input
-                        type="radio"
-                        name="leased"
-                        value='no'
-                        checked={leased === "no"}
-                        onChange={leasedchange1}
+                      <div className='fieldbox'>
+                        <label className='fieldname' >RERA ID:</label>
+                        <input type='text' className='fieldvalue2' placeholder=' example UPRERAPRJ72xx' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
+                        <br />
+                        <br />
+                        <label className='fieldname'>Property Facing:</label>
+                        <select
+                          name='propertyfacing'
+                          className='fieldvalue'
+                          onChange={handleChange}
+                          value={formdata.propertyfacing}
+                          required
+                        >
+                          <option value='North'>North</option>
+                          <option value='South'>South</option>
+                          <option value='East'>East</option>
+                          <option value='West'>West</option>
+                          <option value='North-East'>North-East</option>
+                          <option value='North-West'>North-West</option>
+                          <option value='South-East'>South-East</option>
+                          <option value='South-West'>South-West</option>
+                        </select>
+                        <label className='fieldname'>Token amount:</label>
+                        <input className='fieldvalue' type='number' name='secuuritydeposit' onChange={handleChange} value={formdata.secuuritydeposit}></input>
+                        <br></br>
 
-                      />
-                      {
-                        leased === 'yes' && (
-                          <>
-                            <br></br>
-                            <label>Montly Rent Price :</label>
-                            <input type='number' name='montlyrent'  value={formdata.montlyrent} onChange={handleChange} ></input>
-                            <br></br>
-                            <label>Remaining Days:</label>
-                            <input type='number' name='remainingtime'  value={formdata.remainingtime} onChange={handleChange}  placeholder='In days'></input>
-                          </>
-                        )
-                      }
+                      </div>
+                      <div className='fieldbox'>
+
+                        <label className='fieldname'>Currently leased Out: </label>
+                        <label className='radio-container'>
+                          <span className='radio-label'>Yes</span>
+                          <input
+                            className='fieldvalue'
+                            type="radio"
+                            name="leased"
+                            value='yes'
+                            checked={leased === "yes"}
+                            onChange={leasedchange1}
+                          />
+                          <span className='radio-checkmark'></span>
+                        </label>
+                        <label className='radio-container'>
+                          <span className='radio-label'>No</span>
+                          <input
+                            className='fieldvalue'
+                            type="radio"
+                            name="leased"
+                            value='no'
+                            checked={leased === "no"}
+                            onChange={leasedchange1}
+                          />
+                          <span className='radio-checkmark'></span>
+                        </label>
+                        {
+                          leased === 'yes' && (
+                            <>
+                              <div className='fieldbox'>
+                                <label className='fieldname'>Montly Rent Price :</label>
+                                <input className='fieldvalue' type='number' name='montlyrent' value={formdata.montlyrent} onChange={handleChange} ></input>
+                                <br></br>
+                                <label className='fieldname'>Remaining Days:</label>
+                                <input className='fieldvalue' type='number' name='remainingtime' value={formdata.remainingtime} onChange={handleChange} placeholder='In days'></input>
+                              </div>
+                            </>
+                          )
+                        }
+                      </div>
                     </>
                   )}
 
-                  <br></br>
-                  <label>Price :</label>
-                  <input type='number' name='price' onChange={handleChange} value={formdata.price} required></input>
-                  <select
-                    name='range'
-                    onChange={handleChange}
-                    value={formdata.range}
-                    required
-                  >
-                    <option value='Lakh'>Lakhs</option>
-                    <option value='Crore'>Crore</option>
-                    <option value='million'>million</option>
-                    <option value='billion'>billion</option>
-                  </select>
-                  <select
-                    name='moneytype'
-                    onChange={handleChange}
-                    value={formdata.moneytype}
-                    required
-                  >
-                    <option value='Rupees' >Rupees</option>
-                    <option value='AED'>Dubai - AED</option>
-                    <option value='Riyal'>Riyal-Qutar</option>
-                  </select>
-                  <br></br>
-                  <label>Token amount:</label>
-                  <input type='number' name='secuuritydeposit' onChange={handleChange} value={formdata.secuuritydeposit}></input>
-                  <br></br>
+                  <div className='fieldbox'>
 
-                  <br></br>
+                    <label className='fieldname'>Price:</label>
+                    <input type='number' className='fieldvalue' name='price' onChange={handleChange} value={formdata.price} required></input>
+                    <select
+                      className='fieldvalue'
+                      name='pricerange'
+                      onChange={handleChange}
+                      value={formdata.pricerange}
+                      required
+                    >
+
+                      <option value='Lakh'>Lakhs</option>
+                      <option value='Crore'>Crore</option>
+                      <option value='million'>Million</option>
+                      <option value='billion'>Billion</option>
+                    </select>
+                    <select
+                      className='fieldvalue'
+                      name='moneytype'
+                      onChange={handleChange}
+                      value={formdata.moneytype}
+                      required
+                    >
+                      <option value='Rupees' >Rupees</option>
+                      <option value='AED'>Dubai - AED</option>
+                      <option value='Riyal'>Riyal-Qutar</option>
+                    </select>
+                  </div>
                   {commercial !== 'land' && (
                     <>
-                      <label>Floor Plan:</label>
-                      <input type="file" name="floorplan" onChange={handleFloorplanChange} multiple accept=".jpg,.png,.pdf" />
-                      <br />
-                    </>
-                  )}
-
-                  <label>Upload Photos:</label>
-                  <input type="file" name="photos" multiple onChange={handlePhotosChange} accept=".jpg,.png" />
-                  <br />
-                  <br></br>
-                  {commercial !== 'land' && (
-                    <>
-                      <label>Amenties</label>
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="AirConditioner"
-                        onChange={handleChange}
-                      />
-                      Air Conditioner
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Cable Tv"
-                        onChange={handleChange}
-                      />
-                      Cable TV
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="wifi"
-                        onChange={handleChange}
-                      />
-                      Wifi
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Dishwasher"
-                        onChange={handleChange}
-                      />
-                      Dishwasher
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Heating"
-                        onChange={handleChange}
-                      />
-                      Heating
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Lift"
-                        onChange={handleChange}
-                      />
-                      Lift
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Intercomm Facility"
-                        onChange={handleChange}
-                      />
-                      Intercomm Facility
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="MicroWave"
-                        onChange={handleChange}
-                      />
-                      Microwave
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Park"
-                        onChange={handleChange}
-                      />
-                      Park
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Parking"
-                        onChange={handleChange}
-                      />
-                      parking
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Guest Parking"
-                        onChange={handleChange}
-                      />
-                      Guest Parking
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Security"
-                        onChange={handleChange}
-                      />
-                      Security
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="playarea"
-                        onChange={handleChange}
-                      />
-                      playarea
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="CCTV"
-                        onChange={handleChange}
-                      />
-                      CCTV
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="powerbackup"
-                        onChange={handleChange}
-                      />
-                      powerbackup
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="gas pipeline"
-                        onChange={handleChange}
-                      />
-                      Gas pipeline
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="gym"
-                        onChange={handleChange}
-                      />
-                      GYM
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Swimmingpool"
-                        onChange={handleChange}
-                      />
-                      Swimming pool
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="multipurpose court"
-                        onChange={handleChange}
-                      />
-                      multipurpose court
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="multipurpose hall"
-                        onChange={handleChange}
-                      />
-                      multipurpose hall
-                      <br></br>
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="gas pipeline"
-                        onChange={handleChange}
-                      />
-
-                      chimmney
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Modular kitchen"
-                        onChange={handleChange}
-                      />
-                      Modular kitchen
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Refrigetor"
-                        onChange={handleChange}
-                      />
-                      Refrigetor
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="rear lawn"
-                        onChange={handleChange}
-                      />
-                      rear lawn
-                      <br></br>
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="Front lawn"
-                        onChange={handleChange}
-                      />
-                      Front lawn
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="ev charge"
-                        onChange={handleChange}
-                      />
-                      ev charge
-
-                      <input
-                        type="checkbox"
-                        name="amenities"
-                        value="club house"
-                        onChange={handleChange}
-                      />
-                      club house
-
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Amenities</label>
+                        <div className='checkbox-group'>
+                          {[
+                            { name: 'Air Conditioner', icon: <TbAirConditioning /> },
+                            { name: 'Cable Tv', icon: <FaSatelliteDish /> },
+                            { name: 'Wifi', icon: <FaWifi /> },
+                            { name: 'Dishwasher', icon: <LuUtensilsCrossed /> },
+                            { name: 'Heating', icon: <PiThermometerHotBold /> },
+                            { name: 'Lift', icon: <GrElevator /> },
+                            { name: 'Intercomm Facility', icon: <LiaIntercom /> },
+                            { name: 'Microwave', icon: <MdMicrowave /> },
+                            { name: 'Park', icon: <PiPark /> },
+                            { name: 'Parking', icon: <LuParkingCircle /> },
+                            { name: 'Guest Parking', icon: <RiParkingBoxLine /> },
+                            { name: 'Security', icon: <MdSecurity /> },
+                            { name: 'Play Area', icon: <GiKidSlide /> },
+                            { name: 'CCTV', icon: <BiCctv /> },
+                            { name: 'Power Backup', icon: <ImPower /> },
+                            { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                            { name: 'Gym', icon: <GiWeightLiftingUp /> },
+                            { name: 'Swimming Pool', icon: <FaPersonSwimming /> },
+                            { name: 'Multipurpose Court', icon: <PiCourtBasketball /> },
+                            { name: 'Multipurpose Hall', icon: <TbBuildingBank /> },
+                            { name: 'Chimney', icon: <GiChimney /> },
+                            { name: 'Modular Kitchen', icon: <FaKitchenSet /> },
+                            { name: 'Refrigerator', icon: <TbFridge /> },
+                            { name: 'Rear Lawn', icon: <GiGrassMushroom /> },
+                            { name: 'Front Lawn', icon: <GiGrass /> },
+                            { name: 'EV Charge', icon: <FaChargingStation /> },
+                            { name: 'Club House', icon: <PiWarehouseLight /> }
+                          ].map((amenity, index) => (
+                            <label key={index} className='custom-checkbox'>
+                              <input
+                                type="checkbox"
+                                name="amenities"
+                                value={amenity.name}
+                                onChange={handleChange}
+                              />
+                              <p className='fieldname2'>
+                                {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                              </p>
+                              <span className='checkmark'></span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
                     </>
                   )}
                   {
                     commercial === 'land' && (
                       <>
-                        <label>Amenties </label>
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="park"
-                          onChange={handleChange}
-                        />
-                        Park
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="CCTV"
-                          onChange={handleChange}
-                        />
-
-                        CCTV
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="parking"
-                          onChange={handleChange}
-                        />
-                        Parking
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Security"
-                          onChange={handleChange}
-                        />
-                        Security
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="play area"
-                          onChange={handleChange}
-                        />
-                        Play Area
-                        <br></br>
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="guest parking"
-                          onChange={handleChange}
-                        />
-                        Guest Parking
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="power backup"
-                          onChange={handleChange}
-                        />
-                        Power Backup
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gas pipeline"
-                          onChange={handleChange}
-                        />
-                        gas pipeline
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Amenities</label>
+                          <div className='checkbox-group'>
+                            {[
+                              { name: 'Park', icon: <PiPark /> },
+                              { name: 'Parking', icon: <LuParkingCircle /> },
+                              { name: 'Security', icon: <MdSecurity /> },
+                              { name: 'Play Area', icon: <GiKidSlide /> },
+                              { name: 'CCTV', icon: <BiCctv /> },
+                              { name: 'Power Backup', icon: <ImPower /> },
+                              { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                            ].map((amenity, index) => (
+                              <label key={index} className='custom-checkbox'>
+                                <input
+                                  type="checkbox"
+                                  name="amenities"
+                                  value={amenity.name}
+                                  onChange={handleChange}
+                                />
+                                <p className='fieldname2'>
+                                  {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                                </p>
+                                <span className='checkmark'></span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
                       </>
                     )
                   }
-                  <br></br>
-                  <h3>Distance</h3>
-                  <label>Metro</label><input type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Bus</label><input type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>School</label><input type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Hospital</label><input type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Mall</label><input type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Resturant: </label><input type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <label>Cinema: </label><input type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
-                  <br></br>
-                  <button type='submit'>submit</button>
+                  <div className='fieldbox'>
+                    <h1 className='fieldname'>Distance</h1>
+                    <div className='distancebox'>
+                      <label className='fieldname'>Metro</label><input className='fieldvalue fieldvalue8' type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Bus</label><input className='fieldvalue fieldvalue8' type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>School</label><input className='fieldvalue fieldvalue8' type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Hospital</label><input className='fieldvalue fieldvalue8' type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Mall</label><input className='fieldvalue fieldvalue8' type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Resturant: </label><input className='fieldvalue fieldvalue8' type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
+
+                      <label className='fieldname'>Cinema: </label><input className='fieldvalue fieldvalue8' type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
+
+                    </div>
+                  </div>
+
+                  {commercial !== 'land' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Floor Plan:</label>
+                        <input
+                          className='fieldvalue4'
+                          type="file"
+                          name="floorplan"
+                          id="floorplan"
+                          onChange={handleFloorplanChange}
+                          multiple
+                          accept=".jpg,.png,.pdf"
+                        />
+                        <label htmlFor="floorplan" className='custom-file-input'>
+                          Choose Floor Plan
+                        </label>
+
+                        <label className='fieldname'>Upload Photos:</label>
+                        <input
+                          className='fieldvalue4'
+                          type="file"
+                          name="photos"
+                          id="photos"
+                          onChange={handlePhotosChange}
+                          multiple
+                          accept=".jpg,.png"
+                        />
+                        <label htmlFor="photos" className='custom-file-input'>
+                          Choose Photos
+                        </label>
+                      </div>
+                    </>
+                  )}
+                  {commercial === 'land' && (
+                    <>
+                      <div className='fieldbox'>
+                        <label className='fieldname'>Upload Photos:</label>
+                        <input
+                          className='fieldvalue4 '
+                          type="file"
+                          name="photos"
+                          id="photos"
+                          onChange={handlePhotosChange}
+                          multiple
+                          accept=".jpg,.png"
+                        />
+                        <label htmlFor="photos" className='custom-file-input'>
+                          Choose Photos
+                        </label>
+                      </div>
+                    </>
+                  )}
+                  <button type='submit' className='btn2'>submit</button>
                 </form>
               </div>
             </>
@@ -1983,20 +1660,45 @@ function Form() {
       {
         category === 'commercial' && resitype === 'rent' && (
           <>
-            <h1>commercial-rent</h1>
-            <br></br>
-            <button onClick={commhandler1}>Office Space</button>
-            <button onClick={commhandler2} >Shop</button>
-            <button onClick={commhandler3} >Land</button>
-            <button onClick={commhandler4}>Coworking Space</button>
-            <button onClick={commhandler5}>Showroom</button>
+            <button className={activeButton4 === 'officespace' ? 'active' : ''}
+              onClick={() => {
+                setcommercial('officespace');
+                handleButtonClick4('officespace');
+              }}
+            >OfficeSpace</button>
+            <button className={activeButton4 === 'shop' ? 'active' : ''}
+              onClick={() => {
+                setcommercial('shop');
+                handleButtonClick4('shop');
+              }}
+            >Shop</button>
+            <button className={activeButton4 === 'land' ? 'active' : ''}
+              onClick={() => {
+                setcommercial('land');
+                handleButtonClick4('land');
+              }}
+            >Land</button>
+            <button className={activeButton4 === 'coworkingspace' ? 'active' : ''}
+              onClick={() => {
+                setcommercial('coworkingspace');
+                handleButtonClick4('coworkingspace');
+              }}
+            >CoWorkingSpace</button>
+            <button className={activeButton4 === 'showroom' ? 'active' : ''}
+              onClick={() => {
+                setcommercial('showroom');
+                handleButtonClick4('showroom');
+              }}
+            >Showroom</button>
             {(commercial === 'officespace' || commercial === 'shop' || commercial === 'land' || commercial === 'coworkingspace' || commercial === 'showroom') && (
               <>
-                <div>
+                <div className='container'>
                   <br></br>
                   <form onSubmit={handleSubmit}>
-                  <label>Country:</label>
-                <select
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Country:</label>
+                      <select
+                        className='fieldvalue'
                         name='country'
                         onChange={handleChange}
                         value={formdata.country}
@@ -2007,538 +1709,405 @@ function Form() {
                         <option value='uae'>UAE
                         </option>
                         <option value='qatar'>QATAR</option>
-                </select>
-                <label>City:</label>
-                <select
+                      </select>
+                      <label className='fieldname'>City:</label>
+                      <select
+                        className='fieldvalue'
                         name='city'
                         onChange={handleChange}
                         value={formdata.city}
                         required
 
                       >
-                        {formdata.country ==='india' && (
-                        <>
-                         <option value='noida'>Noida</option>
-                        <option value='gurgaon'>Gurgaon
-                        </option>
-                        <option value='greaternoida'>Greater Noida</option>
-                        <option value='ghaziabad'>Ghaziabad</option>
-                        <option value='delhi'>Delhi</option>
-                        <option value='faridabad'>Faridabad</option>
-                        </>
+                        {formdata.country === 'india' && (
+                          <>
+                            <option value='noida'>Noida</option>
+                            <option value='gurgaon'>Gurgaon
+                            </option>
+                            <option value='greaternoida'>Greater Noida</option>
+                            <option value='ghaziabad'>Ghaziabad</option>
+                            <option value='delhi'>Delhi</option>
+                            <option value='faridabad'>Faridabad</option>
+                          </>
                         )}
-                        {formdata.country ==='uae' && (
-                        <>
-                         <option value='dubai'>Dubai</option>
-                        </>
+                        {formdata.country === 'uae' && (
+                          <>
+                            <option value='dubai'>Dubai</option>
+                          </>
                         )}
-                        {formdata.country ==='qatar' && (
-                        <>
-                         <option value='doha'>Doha</option>
-                        </>
+                        {formdata.country === 'qatar' && (
+                          <>
+                            <option value='doha'>Doha</option>
+                          </>
                         )}
-                  </select>
-                  <br></br>
-                    <label>locality:</label>
-                    <input type='text' name='locality' onChange={handleChange} value={formdata.locality}></input>
-                    <br></br>
-                    <label>Property Name:</label>
-                    <input type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
-                    </input>
-                    <br></br>
-                    <label>Property Address:</label>
-                    <input type='text' name='address' onChange={handleChange} value={formdata.address} required>
-                    </input>
-                    <br></br>
-                    {(commercial !== 'land' || commercial === 'land') && (
-                      <>
-                        <label>Area Detail(in sq.ft) : </label>
-                        <input type='number' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
-                        </input>
-                        <select
-                          name='areatype'
-                          onChange={handleChange}
-                          value={formdata.areatype}
-                          required
-                        >
-                          <option value='Super Built-up Area'>Super Built Up Area</option>
-                          <option value='Built-up area'>Built-up Area</option>
-                          <option value='Carpet Area'>Carpet Area</option>
-                        </select>
-                        <br></br>
-                      </>
-                    )}
+                      </select>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>locality:</label>
+                      <input type='text' className='fieldvalue' placeholder='Enter locality' name='locality' onChange={handleChange} value={formdata.locality}></input>
+                      <label className='fieldname'>Pincode:</label>
+                      <input type='text' className='fieldvalue' placeholder='Enter Pincode' name='pincode' onChange={handleChange} value={formdata.pincode}></input>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Property Name:</label>
+                      <input className='fieldvalue2' placeholder='Enter Property Name' type='text' name='propertyname' onChange={handleChange} value={formdata.propertyname} required>
+                      </input>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Property Address:</label>
+                      <input className='fieldvalue2' type='text' placeholder='Enter Property address' name='address' onChange={handleChange} value={formdata.address} required>
+                      </input>
+                    </div>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Area Detail(in sq.ft) : </label>
+                      <input className='fieldvalue' type='number' name='areadetail' onChange={handleChange} value={formdata.areadetail} required>
+                      </input>
+                      <select
+                        className='fieldvalue'
+                        name='areatype'
+                        onChange={handleChange}
+                        value={formdata.areatype}
+                        required
+                      >
+                        <option value='Super Built-up-Area'>Super Built Up Area</option>
+                        <option value='Built-up area'>Built-up Area</option>
+                        <option value='Carpet Area'>Carpet Area</option>
+                      </select>
+                    </div>
+
                     {(commercial === 'shop' || commercial === 'land') && (
                       <>
-                        <br></br>
-                        <label>Plot Dimesion:</label>
-                        <input type='number' name='length' onChange={handleChange} value={formdata.length} placeholder='Length' required>
-                        </input>
-                        X
-                        <input type='number' name='width' onChange={handleChange} value={formdata.width} placeholder='width' required>
-                        </input>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Plot Dimesion:</label>
+                          <input type='number' className='fieldvalue' name='length in ft.' onChange={handleChange} value={formdata.length} placeholder='Length' required>
+                          </input>
+                          X
+
+                          <input type='number' className='fieldvalue' name='width in ft.' onChange={handleChange} value={formdata.width} placeholder='width' required>
+
+                          </input>
+
+                        </div>
                       </>
                     )}
-                    <br></br>
-                    <label>Description : </label>
-                    <textarea name="description" value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
-                    <br></br>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>Description</label>
+                      <textarea className='fieldvalue3' name="description" placeholder='Tell Something About Your Property' value={formdata.description} onChange={handleChange} rows={7} cols={70} required></textarea>
+                    </div>
 
                     {commercial !== 'land' && (
                       <>
-                        <label>Furnish Type:</label>
-                        <select
-                          name='furnishtype'
-                          onChange={handleChange}
-                          value={formdata.furnishtype}
-                          required
-                        >
-                          <option value='Fully furnished'>Fully furnished</option>
-                          <option value='Semi furnished'>Semi furnished</option>
-                          <option value='Un furnished'>Un furnished</option>
-                        </select>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Furnish Type:</label>
+                          <select
+                            className='fieldvalue'
+                            name='furnishtype'
+                            onChange={handleChange}
+                            value={formdata.furnishtype}
+                            required
+                          >
+                            <option value='Fully furnished'>Fully furnished</option>
+                            <option value='Semi furnished'>Semi furnished</option>
+                            <option value='Un furnished'>Un furnished</option>
+                          </select>
+                        </div>
 
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Floor no:</label>
+                          <input className='fieldvalue' type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
 
-                        <br></br>
-                        <label>Floor no:</label>
-                        <input type='number' name='floorno' onChange={handleChange} value={formdata.floorno}></input>
+                          <label className='fieldname'>Total Floor:</label>
+                          <input type='number' className='fieldvalue' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
 
-                        <label>Total Floor:</label>
-                        <input type='number' name='totalfloor' onChange={handleChange} value={formdata.totalfloor}></input>
-                        <br></br>
-                      </>
-                    )}
-                    <br></br>
-                    <label></label>
-
-                    <br></br>
-                    <label>RERA ID:</label>
-                    <input type='text' name='reraid' onChange={handleChange} value={formdata.reraid}></input>
-
-                    {commercial !== 'land' && (
-                      <>
-                        <label>Property Facing:</label>
-                        <select
-                          name='propertyfacing'
-                          onChange={handleChange}
-                          value={formdata.propertyfacing}
-                          required
-                        >
-                          <option value='North'>North</option>
-                          <option value='South'>South</option>
-                          <option value='East'>East</option>
-                          <option value='West'>West</option>
-                          <option value='North-East'>North-East</option>
-                          <option value='North-West'>North-West</option>
-                          <option value='South-East'>South-East</option>
-                          <option value='South-West'>South-West</option>
-                        </select>
-                        <label>Maintenance charge per month:</label>
-                        <input type='number' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
-                        <br></br>
+                        </div>
                       </>
                     )}
 
-
-                    <label>Montly Rent Price :</label>
-                    <input type='number' name='montlyrent' onChange={handleChange} value={formdata.montlyrent} required></input>
-                    <select
-                      name='range'
-                      onChange={handleChange}
-                      value={formdata.range}
-                      required
-                    >
-                      <option value='thousand'>Thousand</option>
-                      <option value='Lakh'>Lakhs</option>
-                      <option value='Crore'>Crore</option>
-                      <option value='million'>million</option>
-                      <option value='billion'>billion</option>
-                    </select>
-                    <select
-                      name='moneytype'
-                      onChange={handleChange}
-                      value={formdata.moneytype}
-                      required
-                    >
-                      <option value='Rupees' >Rupees</option>
-                      <option value='AED'>Dubai - AED</option>
-                      <option value='Riyal'>Riyal-Qutar</option>
-                    </select>
-                    <br></br>
+                    <div className='fieldbox'>
+                      <label className='fieldname'>RERA ID:</label>
+                      <input type='text' className='fieldvalue2' name='reraid' placeholder=' example UPRERAPRJXXXX' onChange={handleChange} value={formdata.reraid}></input>
+                    </div>
                     {commercial !== 'land' && (
                       <>
-                        <label>Available Status</label>
-                        <input
-                          type="radio"
-                          name="immediate"
-                          value={formdata.remainingtime}
-                          onChange={handleChange}
-                        />
-                        Immediate
-                        <label> Or </label>
-                        <input
-                          type="text"
-                          name="remainingtime"
-                          value={formdata.remainingtime}
-                          onChange={handleChange}
-                          placeholder='remaining days'
-                        />
-                        <br></br>
-                        <label>Security amount:</label>
-                        <input type='number' name='secuuritydeposit'  value={formdata.secuuritydeposit} onChange={handleChange}></input>
-                        <br></br>
-                        <label>Lock in period:</label>
-                        <input type='number' name='lockinperiod'  value={formdata.lockinperiod} onChange={handleChange} placeholder='In Years'></input>
-                        <br></br>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Property Facing:</label>
+                          <select
+                            name='propertyfacing'
+                            className='fieldvalue'
+                            onChange={handleChange}
+                            value={formdata.propertyfacing}
+                            required
+                          >
+                            <option value='North'>North</option>
+                            <option value='South'>South</option>
+                            <option value='East'>East</option>
+                            <option value='West'>West</option>
+                            <option value='North-East'>North-East</option>
+                            <option value='North-West'>North-West</option>
+                            <option value='South-East'>South-East</option>
+                            <option value='South-West'>South-West</option>
+                          </select>
+
+                          <label className='fieldname'>Maintenance charge per month:</label>
+                          <input type='number' className='fieldvalue' name='maintenancecharge' onChange={handleChange} value={formdata.maintenancecharge}></input>
+                        </div>
                       </>
                     )}
 
 
+                    <div className='fieldbox'>
+
+                      <label className='fieldname'>Price:</label>
+                      <input type='number' className='fieldvalue' name='price' onChange={handleChange} value={formdata.price} required></input>
+                      <select
+                        className='fieldvalue'
+                        name='pricerange'
+                        onChange={handleChange}
+                        value={formdata.pricerange}
+                        required
+                      >
+
+                        <option value='Lakh'>Lakhs</option>
+                        <option value='Crore'>Crore</option>
+                        <option value='million'>Million</option>
+                        <option value='billion'>Billion</option>
+                      </select>
+                      <select
+                        className='fieldvalue'
+                        name='moneytype'
+                        onChange={handleChange}
+                        value={formdata.moneytype}
+                        required
+                      >
+                        <option value='Rupees' >Rupees</option>
+                        <option value='AED'>Dubai - AED</option>
+                        <option value='Riyal'>Riyal-Qutar</option>
+                      </select>
+                    </div>
+
                     {commercial !== 'land' && (
-
                       <>
-                        <label>Wiling to modify Interior</label>
-                        <label>  Yes</label>
-                        <input
-                          type="radio"
-                          name="modifyinterior"
-                          value={formdata.modifyinterior}
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Available Status</label>
+                          <label className='radio-container'>
+                            <span className='radio-label'>Immediate</span>
+                            <input
 
-                          onClick={modify('yes')}
-                        />
-                        <label> No</label>
-                        <input
-                          type="radio"
-                          name={formdata.modifyinterior}
-                          value='no'
+                              type="radio"
+                              name="immediate"
+                              value={formdata.remainingtime}
+                              onChange={handleChange}
+                            />
+                            <span className='radio-checkmark'></span>
+                          </label>
+                          <label className='fieldname'> Or </label>
+                          <input
+                            className='fieldvalue'
+                            type="text"
+                            name="remainingtime"
+                            value={formdata.remainingtime}
+                            onChange={handleChange}
+                            placeholder='remaining days'
+                          />
+                        </div>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Security amount:</label>
+                          <input type='number' className='fieldvalue' name='secuuritydeposit' value={formdata.secuuritydeposit} onChange={handleChange}></input>
+                          <label className='fieldname'>Lock in period:</label>
+                          <input type='number' className='fieldvalue' name='lockinperiod' value={formdata.lockinperiod} onChange={handleChange} placeholder='In Years'></input>
 
-                          onClick={modify('no')}
-                        ></input>
-                        <br></br>
-                        <label>Floor Plan:</label>
-                        <input type="file" name="floorplan" onChange={handleFloorplanChange} multiple accept=".jpg,.png,.pdf" />
-                        <br />
+                        </div>
+
                       </>
                     )}
 
-                    <label>Upload Photos:</label>
-                    <input type="file" name="photos" multiple onChange={handlePhotosChange} accept=".jpg,.png" />
-                    <br />
-                    <br></br>
+
+                    {commercial !== 'land' && (
+
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Wiling to modify Interior</label>
+                          <label className='radio-container'>
+                            <label className='radio-label'>Yes</label>
+                            <input
+                              type="radio"
+                              name="modifyinterior"
+                              value={formdata.modifyinterior}
+
+                              onClick={modify('yes')}
+                            />
+                            <span className='radio-checkmark'></span>
+                          </label>
+                          <label className='radio-container'>
+                            <label className='radio-label'>No</label>
+                            <input
+                              type="radio"
+                              name={formdata.modifyinterior}
+                              value='no'
+
+                              onClick={modify('no')}
+                            ></input>
+                            <span className='radio-checkmark'></span>
+                          </label>
+                        </div>
+                      </>
+                    )}
                     {commercial !== 'land' && (
                       <>
-                        <label>Amenties</label>
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="AirConditioner"
-                          onChange={handleChange}
-                        />
-                        Air Conditioner
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Cable Tv"
-                          onChange={handleChange}
-                        />
-                        Cable TV
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="wifi"
-                          onChange={handleChange}
-                        />
-                        Wifi
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Dishwasher"
-                          onChange={handleChange}
-                        />
-                        Dishwasher
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Heating"
-                          onChange={handleChange}
-                        />
-                        Heating
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Lift"
-                          onChange={handleChange}
-                        />
-                        Lift
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Intercomm Facility"
-                          onChange={handleChange}
-                        />
-                        Intercomm Facility
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="MicroWave"
-                          onChange={handleChange}
-                        />
-                        Microwave
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Park"
-                          onChange={handleChange}
-                        />
-                        Park
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Parking"
-                          onChange={handleChange}
-                        />
-                        parking
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Guest Parking"
-                          onChange={handleChange}
-                        />
-                        Guest Parking
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Security"
-                          onChange={handleChange}
-                        />
-                        Security
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="playarea"
-                          onChange={handleChange}
-                        />
-                        playarea
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="CCTV"
-                          onChange={handleChange}
-                        />
-                        CCTV
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="powerbackup"
-                          onChange={handleChange}
-                        />
-                        powerbackup
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gas pipeline"
-                          onChange={handleChange}
-                        />
-                        Gas pipeline
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gym"
-                          onChange={handleChange}
-                        />
-                        GYM
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Swimmingpool"
-                          onChange={handleChange}
-                        />
-                        Swimming pool
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="multipurpose court"
-                          onChange={handleChange}
-                        />
-                        multipurpose court
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="multipurpose hall"
-                          onChange={handleChange}
-                        />
-                        multipurpose hall
-                        <br></br>
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="gas pipeline"
-                          onChange={handleChange}
-                        />
-
-                        chimmney
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Modular kitchen"
-                          onChange={handleChange}
-                        />
-                        Modular kitchen
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Refrigetor"
-                          onChange={handleChange}
-                        />
-                        Refrigetor
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="rear lawn"
-                          onChange={handleChange}
-                        />
-                        rear lawn
-                        <br></br>
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="Front lawn"
-                          onChange={handleChange}
-                        />
-                        Front lawn
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="ev charge"
-                          onChange={handleChange}
-                        />
-                        ev charge
-
-                        <input
-                          type="checkbox"
-                          name="amenities"
-                          value="club house"
-                          onChange={handleChange}
-                        />
-                        club house
-
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Amenities</label>
+                          <div className='checkbox-group'>
+                            {[
+                              { name: 'Air Conditioner', icon: <TbAirConditioning /> },
+                              { name: 'Cable Tv', icon: <FaSatelliteDish /> },
+                              { name: 'Wifi', icon: <FaWifi /> },
+                              { name: 'Dishwasher', icon: <LuUtensilsCrossed /> },
+                              { name: 'Heating', icon: <PiThermometerHotBold /> },
+                              { name: 'Lift', icon: <GrElevator /> },
+                              { name: 'Intercomm Facility', icon: <LiaIntercom /> },
+                              { name: 'Microwave', icon: <MdMicrowave /> },
+                              { name: 'Park', icon: <PiPark /> },
+                              { name: 'Parking', icon: <LuParkingCircle /> },
+                              { name: 'Guest Parking', icon: <RiParkingBoxLine /> },
+                              { name: 'Security', icon: <MdSecurity /> },
+                              { name: 'Play Area', icon: <GiKidSlide /> },
+                              { name: 'CCTV', icon: <BiCctv /> },
+                              { name: 'Power Backup', icon: <ImPower /> },
+                              { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                              { name: 'Gym', icon: <GiWeightLiftingUp /> },
+                              { name: 'Swimming Pool', icon: <FaPersonSwimming /> },
+                              { name: 'Multipurpose Court', icon: <PiCourtBasketball /> },
+                              { name: 'Multipurpose Hall', icon: <TbBuildingBank /> },
+                              { name: 'Chimney', icon: <GiChimney /> },
+                              { name: 'Modular Kitchen', icon: <FaKitchenSet /> },
+                              { name: 'Refrigerator', icon: <TbFridge /> },
+                              { name: 'Rear Lawn', icon: <GiGrassMushroom /> },
+                              { name: 'Front Lawn', icon: <GiGrass /> },
+                              { name: 'EV Charge', icon: <FaChargingStation /> },
+                              { name: 'Club House', icon: <PiWarehouseLight /> }
+                            ].map((amenity, index) => (
+                              <label key={index} className='custom-checkbox'>
+                                <input
+                                  type="checkbox"
+                                  name="amenities"
+                                  value={amenity.name}
+                                  onChange={handleChange}
+                                />
+                                <p className='fieldname2'>
+                                  {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                                </p>
+                                <span className='checkmark'></span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
                       </>
                     )}
                     {
                       commercial === 'land' && (
                         <>
-                          <label>Amenties </label>
-                          <br></br>
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="park"
-                            onChange={handleChange}
-                          />
-                          Park
-                          <br></br>
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="CCTV"
-                            onChange={handleChange}
-                          />
-
-                          CCTV
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="parking"
-                            onChange={handleChange}
-                          />
-                          Parking
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="Security"
-                            onChange={handleChange}
-                          />
-                          Security
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="play area"
-                            onChange={handleChange}
-                          />
-                          Play Area
-                          <br></br>
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="guest parking"
-                            onChange={handleChange}
-                          />
-                          Guest Parking
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="power backup"
-                            onChange={handleChange}
-                          />
-                          Power Backup
-
-                          <input
-                            type="checkbox"
-                            name="amenities"
-                            value="gas pipeline"
-                            onChange={handleChange}
-                          />
-                          gas pipeline
+                          <div className='fieldbox'>
+                            <label className='fieldname'>Amenities</label>
+                            <div className='checkbox-group'>
+                              {[
+                                { name: 'Park', icon: <PiPark /> },
+                                { name: 'Parking', icon: <LuParkingCircle /> },
+                                { name: 'Security', icon: <MdSecurity /> },
+                                { name: 'Play Area', icon: <GiKidSlide /> },
+                                { name: 'CCTV', icon: <BiCctv /> },
+                                { name: 'Power Backup', icon: <ImPower /> },
+                                { name: 'Gas Pipeline', icon: <GiGasStove /> },
+                              ].map((amenity, index) => (
+                                <label key={index} className='custom-checkbox'>
+                                  <input
+                                    type="checkbox"
+                                    name="amenities"
+                                    value={amenity.name}
+                                    onChange={handleChange}
+                                  />
+                                  <p className='fieldname2'>
+                                    {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
+                                  </p>
+                                  <span className='checkmark'></span>
+                                </label>
+                              ))}
+                            </div>
+                          </div>
                         </>
                       )
                     }
-                    <br></br>
-                    <h3>Distance</h3>
-                    <label>Metro</label><input type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Bus</label><input type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>School</label><input type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Hospital</label><input type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Mall</label><input type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <label>Resturant: </label><input type='number' name='resturant' value={formdata.resturant} onChange={handleChange}  placeholder='in Km'></input>
-                    <br></br>
-                    <label>Cinema: </label><input type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
-                    <br></br>
-                    <button type='submit'>submit</button>
+                    <div className='fieldbox'>
+                      <h1 className='fieldname'>Distance</h1>
+                      <div className='distancebox'>
+                        <label className='fieldname'>Metro</label><input className='fieldvalue fieldvalue8' type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Bus</label><input className='fieldvalue fieldvalue8' type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>School</label><input className='fieldvalue fieldvalue8' type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Hospital</label><input className='fieldvalue fieldvalue8' type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Mall</label><input className='fieldvalue fieldvalue8' type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Resturant: </label><input className='fieldvalue fieldvalue8' type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
+
+                        <label className='fieldname'>Cinema: </label><input className='fieldvalue fieldvalue8' type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
+
+                      </div>
+                    </div>
+                    {commercial !== 'land' && (
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Floor Plan:</label>
+                          <input
+                            className='fieldvalue4'
+                            type="file"
+                            name="floorplan"
+                            id="floorplan"
+                            onChange={handleFloorplanChange}
+                            multiple
+                            accept=".jpg,.png,.pdf"
+                          />
+                          <label htmlFor="floorplan" className='custom-file-input'>
+                            Choose Floor Plan
+                          </label>
+
+                          <label className='fieldname'>Upload Photos:</label>
+                          <input
+                            className='fieldvalue4'
+                            type="file"
+                            name="photos"
+                            id="photos"
+                            onChange={handlePhotosChange}
+                            multiple
+                            accept=".jpg,.png"
+                          />
+                          <label htmlFor="photos" className='custom-file-input'>
+                            Choose Photos
+                          </label>
+                        </div>
+                      </>
+                    )}
+                    {commercial === 'land' && (
+                      <>
+                        <div className='fieldbox'>
+                          <label className='fieldname'>Upload Photos:</label>
+                          <input
+                            className='fieldvalue4 '
+                            type="file"
+                            name="photos"
+                            id="photos"
+                            onChange={handlePhotosChange}
+                            multiple
+                            accept=".jpg,.png"
+                          />
+                          <label htmlFor="photos" className='custom-file-input'>
+                            Choose Photos
+                          </label>
+                        </div>
+                      </>
+                    )}
+                    <button type='submit' className='btn2'>submit</button>
                   </form>
                 </div>
               </>
