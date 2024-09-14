@@ -252,12 +252,20 @@ option:hover {
 }
 
 .head {
-  color: #d9534f;
+  background-color: white;
+  color: black;
   padding: 7px 3px;
   margin-top: 15px;
   letter-spacing: 5px;
+  width: 16vw;
+  text-align: center;
+  border: 1px solid #e4e3e3;
+  border-radius: 10px;
+  box-shadow: 4px 2px 5px #e3e3e3;
 }
-
+#upload{
+  width: 40vw;
+}
 #town {
   font-weight: bold;
   color: red;
@@ -342,6 +350,7 @@ option:hover {
   display: inline-flex;
   align-items: center;
   margin-bottom: 10px;
+  margin-left: 2vw;
 }
 
 /* Hide the default radio button */
@@ -354,14 +363,14 @@ option:hover {
 /* Create a custom radio button */
 .radio-checkmark {
   display: inline-block;
-  width: 18px;
+  width: 25px;
   /* Adjust size as needed */
-  height: 18px;
+  height: 25px;
   /* Adjust size as needed */
   border-radius: 50%;
   background-color: #f0f0f0;
   /* Default background color */
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   /* Border color */
   margin-left: 5px;
   /* Space between radio and label text */
@@ -400,11 +409,56 @@ option:hover {
   text-transform: capitalize;
 }
 
+@media only screen and (max-width: 1300px) {
+  .upperbutton2 {
+    margin-right: 12vw;
+  }
+  .upperbutton3{
+    margin-right: 10vw;
+  }
+  .upperbutton {
+    margin-right: 36vw;
+    margin-top: -27vh;
+  }
+
+  .fieldvaluex {
+    margin-right: 3vw;
+  }
+  .fieldnamex{
+    margin-left: 0px;
+  }
+  .fieldvaluez{
+    margin-left: 100px;
+    width: 14vw;
+  }
+  .fieldvalue{
+    margin-bottom: 10px;
+  }
+  .fieldvalue2 {
+    width: 41vw;
+    height: 6.5vh;
+  }
+ .fieldboxz{
+  margin-bottom: 3px;
+    flex-direction: column;
+    display: flex;
+    padding: 15px;
+ }
+}
+
 @media only screen and (max-width: 600px) {
   body {
     font-size: 14px;
   }
-
+  .container2 {
+    margin-top: -26vh;
+    width: 100%;
+    position: fixed;
+}
+.head{
+  width: 44vw;
+}
+  
   .fieldbox {
     max-width: 90vw;
     /* Make fieldbox take up more space on small screens */
@@ -434,7 +488,7 @@ option:hover {
     font-size: 1.3rem;
     font-weight: 500;
     border-radius: 4%;
-    margin-top: -1vh;
+    margin-top: 2vh;
     display: block;
     margin-bottom: 94px;
   }
@@ -454,41 +508,51 @@ option:hover {
     margin-right: 22vw;
     margin-top: -7vh;
   }
-  #upperbuttonx{
+
+  #upperbuttonx {
     margin-right: 35.5vw;
   }
-  .container{
+
+  .container {
     display: inline-block;
     margin-left: 1vw;
     width: 100%;
     overflow-x: hidden;
   }
 
-  .fieldname{
+  .fieldname {
     font-size: 1rem;
   }
-  #overview, #distance, #propertyimf, #facility, #attachment {
+
+  #overview,
+  #distance,
+  #propertyimf,
+  #facility,
+  #attachment {
     width: 98%;
     padding: 5px 10px;
     margin-top: 4vh;
     border-radius: 10px;
     box-shadow: 0 4px 4px #F5F5F5;
     background-color: #fff;
-}
+  }
+
   .checkbox-group {
     grid-template-columns: repeat(auto-fill, minmax(53px, 1fr));
     gap: 24px;
   }
-   
+
 
   button {
     font-size: 1.1rem;
     /* Smaller buttons on mobile */
     padding: 8px 16px;
   }
-  .fieldvaluex{
+
+  .fieldvaluex {
     margin-left: 0px;
   }
+
   .fieldvalue,
   .fieldvalue2,
   .fieldvalue3,
@@ -498,7 +562,8 @@ option:hover {
     font-size: 1rem;
     /* Full width for inputs */
   }
-  .fieldvalue3{
+
+  .fieldvalue3 {
     height: 20vh;
   }
 }
@@ -560,17 +625,17 @@ option:hover {
   }
 
   .fieldbox {
-    max-width: 60vw;
+    max-width: 44vw;
     /* Wider fieldbox for laptops */
   }
 
   .btn2 {
-    width: 50vw;
-    margin-left: 5vw;
+    width: 47vw;
+    margin-left:0vw;
   }
 
   .checkbox-group {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     /* Adjust column size for laptops */
   }
 
