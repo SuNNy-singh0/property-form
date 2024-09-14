@@ -1,337 +1,580 @@
-*{
+/* *{
     margin: 2px;
-    padding: 5px;
-}
-html,body{
-    overflow-x: hidden;
-}
-button {
-    background-color: white;
-    color: black;
-    border: 2px solid gray;
-    border-radius: 10%;
-    padding: 10px 20px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    font-family: arial;
-    text-transform: capitalize;
-    margin: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: lightgray;
-  }
-  
-  button.active {
-    background-color: #d9534f;
-    color: white;
-  }
+    padding: 5px; */
 
-#head{
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: arial;
-    text-transform: uppercase;
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: #f6f6f6;
 }
-option:hover{
-background-color: red;
-color: white;
+
+button {
+  background-color: white;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 7%;
+  padding: 5px 7px;
+  font-size: 1rem;
+  font-family: arial;
+  text-transform: capitalize;
+  margin: 5px;
+  cursor: pointer;
 }
-.fieldname{
-    font-size: 1.3rem;
-    font-family: sans-serif;
-    text-transform: capitalize;
+
+button:hover {
+  background-color: lightgray;
 }
-.fieldvalue{
-    font-size: 1.1rem;
-    color: black;
-    text-transform: capitalize;
-    border-radius: 6%;
-    margin-right: 0.5vw;
+
+button.active {
+  background-color: #d63d40;
+  color: white;
 }
-.fieldvalue2{
-    height: 3.5vh;
-    font-size: 1.2rem;
-    text-transform: capitalize;
-    border: 0.5px solid grey;
-    border-radius: 5%;
-    width: 44vw;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-    margin-top: 7px;
+
+#head {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: arial;
+  text-transform: uppercase;
 }
-.fieldvalue3{
-    
-    font-size: 1.2rem;
-    text-transform: capitalize;
-    border: 0.5px solid grey;
-    border-radius: 5%;
-    width: 44vw;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-    margin-top: 7px;
+
+option:hover {
+  background-color: #d63d40;
+  color: white;
 }
-.fieldvalue5{
-    
-    font-size: 1.2rem;
-    text-transform: capitalize;
-    border: 0.5px solid grey;
-    border-radius: 5%;
-    width: 9vw;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-    margin-top: 7px;
+
+.fieldname {
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  text-transform: capitalize;
 }
-.distancebox{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
+
+.fieldvalue {
+  font-size: 1.1rem;
+  color: black;
+  text-transform: capitalize;
+  border-radius: 0%;
+  margin-right: 0.5vw;
+  border-radius: 7px;
+  background-color: #f9f9f9;
+  text-align: center;
+  border: 1.5px solid #aba9a9;
+  padding: 4px 2px;
 }
-.fieldvalue4 {
-    display: none;
+
+.fieldvalue2 {
+  height: 3.5vh;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border: 0.5px solid grey;
+  width: 44vw;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 7px;
+  background-color: #f9f9f9;
+  border-radius: 7px;
+  border-radius: 7px;
+  background-color: #f9f9f9;
 }
+
+#overview,
+#distance,
+#propertyimf,
+#facility,
+#attachment {
+  width: 47vw;
+  padding: 5px 10px;
+  margin-top: 4vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px #F5F5F5;
+  background-color: #fff;
+}
+
+.fieldbox2 {
+  justify-content: space-between;
+}
+
+.fieldvaluex {
+  font-size: 1.1rem;
+  color: black;
+  text-transform: capitalize;
+  border-radius: 0%;
+  margin-right: 7vw;
+  width: 10vw;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 7px;
+  background-color: #f9f9f9;
+}
+
+.fieldvaluey {
+  width: 6vw;
+}
+
+.fieldname3 {
+  margin-left: -10px;
+}
+
+.fieldnamex {
+  margin-left: 37px;
+}
+
+.fieldboxx {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fieldvalue3 {
+
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border: 0.5px solid grey;
+
+  width: 44vw;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 7px;
+  border-radius: 7px;
+  background-color: #f9f9f9;
+}
+
 .fieldvalue5 {
-    width: 25px;
-    height: 25px;
-    background-color: white;
-    color: red;
+
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border: 0.5px solid grey;
+  border-radius: 5%;
+  width: 9vw;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 7px;
 }
+
+.distancebox {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  gap: 10px;
+}
+
+.fieldvalue4 {
+  display: none;
+}
+
+.fieldvalue5 {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  color: red;
+}
+
 /* Custom file input button */
 .custom-file-input {
-    font-size: 1.2rem;
-    text-transform: capitalize;
-    border: none;
-    border-radius: 5%;
-    background-color: rgb(231, 23, 23);
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 7px;
-    font-family: arial;
-    display: inline-block;
-    font-weight: bold;
+  font-size: 1.21rem;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 10px;
+  background-color: #df3f3a;
+  color: white;
+  padding: 7px 7px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: -5px;
+  font-family: arial;
 }
-.plot{
-    margin-right: 200px;
+
+.plot {
+  margin-right: 200px;
 }
-.btn2{
-    float: left;
-    width: 40vw;
-    margin-left: 5vw;
-    border-radius: 5%;
-    background-color: rgb(216, 35, 35);
-    color: white;
-    font-size: 1.2rem;
+
+.btn2 {
+  float: left;
+  width: 47vw;
+  margin-left: 0vw;
+  border-radius: 10px;
+  background-color: lightslategrey;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  font-weight: 400;
+  text-transform: capitalize;
 }
-.fieldbox{
-    max-width: 50vw;
-  align-items: center;
-   text-align: center;
-   margin-bottom: 7px;
+
+.btn2:hover {
+  background-color: #df3f3a;
+  color: white;
 }
-.container{
-    text-align: center;
-    align-items: center;
+
+.fieldbox {
+  max-width: 50vw;
+  margin-bottom: 7px;
 }
+
+.banner {
+  margin-top: 12vh;
+  height: 15vw;
+  background-image: url('/public/banner.jpg');
+  background-size: cover;
+}
+
+.upperbutton {
+  display: block;
+  float: right;
+  margin-right: 46vw;
+  margin-top: -11vh;
+}
+
+.upperbutton2 {
+  display: block;
+  float: right;
+  margin-right: 32.5vw;
+}
+
+.container {
+  display: block;
+  float: right;
+  margin-left: 1vw;
+  width: 58vw;
+  overflow-x: hidden;
+}
+
+.question {
+  margin-left: 23vw;
+  border: 2px solid rgb(192, 192, 192);
+  box-shadow: 3px 3px 3px 3px rgb(203, 152, 152);
+  padding: 10px 10px;
+  width: 15vw;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 4%;
+  margin-top: 5vh;
+}
+
+.head {
+  color: #d9534f;
+  padding: 7px 3px;
+  margin-top: 15px;
+  letter-spacing: 5px;
+}
+
+#town {
+  font-weight: bold;
+  color: red;
+}
+
 /* Hide default checkbox appearance */
 .fieldbox {
-    padding: 20px; /* Add some padding around the fieldbox */
-  }
-  
-  .checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Adjust column size */
-    gap: 10px; /* Space between grid items */
-  }
-  
-  .custom-checkbox {
-    display: contents;
-    align-items: center;
-    cursor: pointer;
-    font-size: 16px; /* Adjust as needed */
-    position: relative;
-    padding: 5px; /* Add padding around each checkbox for spacing */
-  }
-  
-  .custom-checkbox input[type="checkbox"] {
-    display: none;
-  }
-  
-  .custom-checkbox .checkmark {
-    width: 20px; /* Adjust size */
-    height: 20px; /* Adjust size */
-    background-color: white; /* Background color of checkbox */
-    border: 2px solid black; /* Border color of checkbox */
-    position: relative;
-    margin-left: 10px; /* Space between text and checkmark */
-  }
-  
-  .custom-checkbox p.fieldname {
-    margin: 0;
-    padding-right: 30px; /* Space for the checkmark */
-  }
-  
-  .custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
-    background-color: white; /* Background color when checked */
-    border-color: black; /* Border color when checked */
-  }
-  
-  .custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
-    content: "✔"; /* Unicode for check mark */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: red; /* Color of the tick mark */
-    font-size: 1.5rem; /* Adjust size */
-  }
-  .fieldname2{
-    font-size: 1.3rem;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .icon{
-    font-size: 1.7rem;
-    font-weight: 600;
-  }
-  .radio-container {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 10px;
+  padding: 20px;
+  /* Add some padding around the fieldbox */
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* Adjust column size */
+  gap: 10px;
+  /* Space between grid items */
+}
+
+.custom-checkbox {
+  display: contents;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  /* Adjust as needed */
+  position: relative;
+  padding: 5px;
+  /* Add padding around each checkbox for spacing */
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox .checkmark {
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border: 2px solid #a5a1a1;
+  position: relative;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.custom-checkbox p.fieldname {
+  margin: 0;
+  padding-right: 30px;
+  /* Space for the checkmark */
+}
+
+.custom-checkbox input[type="checkbox"]:checked~.checkmark {
+  background-color: white;
+  /* Background color when checked */
+  border-color: black;
+  /* Border color when checked */
+}
+
+.custom-checkbox input[type="checkbox"]:checked~.checkmark::after {
+  content: "✔";
+  /* Unicode for check mark */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  /* Color of the tick mark */
+  font-size: 1.5rem;
+  /* Adjust size */
+}
+
+.fieldname2 {
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.icon {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.radio-container {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 /* Hide the default radio button */
 .radio-container input[type="radio"] {
-    opacity: 0;
-    position: absolute;
-    cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
 }
 
 /* Create a custom radio button */
 .radio-checkmark {
-    display: inline-block;
-    width: 18px; /* Adjust size as needed */
-    height: 18px; /* Adjust size as needed */
-    border-radius: 50%;
-    background-color: #f0f0f0; /* Default background color */
-    border: 2px solid #ccc; /* Border color */
-    margin-left: 5px; /* Space between radio and label text */
-    position: relative;
-    transition: background-color 0.2s, border-color 0.2s;
+  display: inline-block;
+  width: 18px;
+  /* Adjust size as needed */
+  height: 18px;
+  /* Adjust size as needed */
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  /* Default background color */
+  border: 2px solid #ccc;
+  /* Border color */
+  margin-left: 5px;
+  /* Space between radio and label text */
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 /* Change background when radio is selected */
-.radio-container input[type="radio"]:checked ~ .radio-checkmark {
-    background-color: red;
-    border-color: red;
+.radio-container input[type="radio"]:checked~.radio-checkmark {
+  background-color: red;
+  border-color: red;
 }
 
 /* Style the radio button checkmark */
 .radio-checkmark::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 10px; /* Adjust size as needed */
-    height: 10px; /* Adjust size as needed */
-    background: white;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  /* Adjust size as needed */
+  height: 10px;
+  /* Adjust size as needed */
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Style for the labels */
 .radio-label {
-    margin-right: 5px; /* Space between label and radio button */
-    font-size: 1.1rem; /* Adjust font size as needed */
-    font-family: sans-serif;
-    text-transform: capitalize;
+  margin-right: 5px;
+  /* Space between label and radio button */
+  font-size: 1.1rem;
+  /* Adjust font size as needed */
+  font-family: sans-serif;
+  text-transform: capitalize;
 }
-  @media only screen and (max-width: 600px) {
-    body {
-      font-size: 14px;
-    }
-    .fieldbox {
-      max-width: 90vw; /* Make fieldbox take up more space on small screens */
-      padding: 10px; /* Reduce padding */
-    }
-    .btn2 {
-      width: 80vw; /* Full width button for mobile */
-      margin-left: 0;
-    }
-    .checkbox-group {
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjust column size for small screens */
-    }
-    button {
-      font-size: 1.1rem; /* Smaller buttons on mobile */
-      padding: 8px 16px; 
-    }
-    .fieldvalue, .fieldvalue2, .fieldvalue3, .fieldvalue5 {
-      width: 100%; /* Full width for inputs */
-    }
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
   }
-  
-  /* Tablets (portrait and small landscape) */
-  @media only screen and (min-width: 601px) and (max-width: 1024px) {
-    body {
-      font-size: 15px;
-    }
-    .fieldbox {
-      max-width: 70vw;
-    }
-    .container {
-        text-align: center;
-        align-items: center;
-    }
-    .fieldvalue {
-        font-size: 1.rem;
-        color: black;
-        text-transform: capitalize;
-        border-radius: 6%;
-        margin-right: 0.5vw;
-        width: 65vw;
-        padding: 10px 15px;
-        margin: 10px 10px;
-    }
-    .fieldvalue8{
-        width: 40vw;
-    }
-    .btn2 {
-      width: 60vw;
-      margin-left: 5vw;
-    }
-    .checkbox-group {
-      grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); /* Adjust column size for tablets */
-    }
-    button {
-      font-size: 1.2rem;
-      padding: 10px 18px;
-    }
-    .distancebox{
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
+
+  .fieldbox {
+    max-width: 90vw;
+    /* Make fieldbox take up more space on small screens */
+    padding: 10px;
+    text-align: center;
+    /* Reduce padding */
   }
-  
-  /* Laptops and Small Desktops */
-  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
-    body {
-      font-size: 16px;
-    }
-    .fieldbox {
-      max-width: 60vw; /* Wider fieldbox for laptops */
-    }
-    .btn2 {
-      width: 50vw;
-      margin-left: 5vw;
-    }
-    .checkbox-group {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Adjust column size for laptops */
-    }
-    button {
-      font-size: 1.3rem;
-    }
+
+  .banner {
+    margin-top: 0px;
+    height: 25vh;
   }
-  
+
+  .btn2 {
+    width: 80vw;
+    /* Full width button for mobile */
+    margin-left: 0;
+  }
+
+  .question {
+    margin-left: 8vw;
+    border: 2px solid rgb(192, 192, 192);
+    box-shadow: 3px 3px 3px 3px rgb(203, 152, 152);
+    padding: 10px 10px;
+    width: 87vw;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 4%;
+    margin-top: -1vh;
+    display: block;
+    margin-bottom: 94px;
+  }
+
+  .upperbutton2 {
+    display: block;
+    /* float: right; */
+    margin-right: -2.5vw;
+    margin-left: 7vw;
+    margin-top: -3px;
+  }
+
+  .upperbutton {
+    display: block;
+    float: right;
+
+    margin-right: 22vw;
+    margin-top: -7vh;
+  }
+  #upperbuttonx{
+    margin-right: 35.5vw;
+  }
+  .container{
+    display: inline-block;
+    margin-left: 1vw;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .fieldname{
+    font-size: 1rem;
+  }
+  #overview, #distance, #propertyimf, #facility, #attachment {
+    width: 98%;
+    padding: 5px 10px;
+    margin-top: 4vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px #F5F5F5;
+    background-color: #fff;
+}
+  .checkbox-group {
+    grid-template-columns: repeat(auto-fill, minmax(53px, 1fr));
+    gap: 24px;
+  }
+   
+
+  button {
+    font-size: 1.1rem;
+    /* Smaller buttons on mobile */
+    padding: 8px 16px;
+  }
+  .fieldvaluex{
+    margin-left: 0px;
+  }
+  .fieldvalue,
+  .fieldvalue2,
+  .fieldvalue3,
+  .fieldvalue5 {
+    width: 100%;
+    height: 7vh;
+    font-size: 1rem;
+    /* Full width for inputs */
+  }
+  .fieldvalue3{
+    height: 20vh;
+  }
+}
+
+/* Tablets (portrait and small landscape) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+
+  .fieldbox {
+    max-width: 70vw;
+  }
+
+  .container {
+    text-align: center;
+    align-items: center;
+  }
+
+  .fieldvalue {
+    font-size: 1.rem;
+    color: black;
+    text-transform: capitalize;
+    border-radius: 6%;
+    margin-right: 0.5vw;
+    width: 65vw;
+    padding: 10px 15px;
+    margin: 10px 10px;
+  }
+
+  .fieldvalue8 {
+    width: 40vw;
+  }
+
+  .btn2 {
+    width: 60vw;
+    margin-left: 5vw;
+  }
+
+  .checkbox-group {
+    grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+    /* Adjust column size for tablets */
+  }
+
+  button {
+    font-size: 1.2rem;
+    padding: 10px 18px;
+  }
+
+  .distancebox {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* Laptops and Small Desktops */
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  body {
+    font-size: 16px;
+  }
+
+  .fieldbox {
+    max-width: 60vw;
+    /* Wider fieldbox for laptops */
+  }
+
+  .btn2 {
+    width: 50vw;
+    margin-left: 5vw;
+  }
+
+  .checkbox-group {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    /* Adjust column size for laptops */
+  }
+
+  button {
+    font-size: 1.3rem;
+  }
+}

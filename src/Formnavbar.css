@@ -1,0 +1,98 @@
+/* Base Styles */
+.property-tabs {
+    background: #FFF;
+    box-shadow: 0px 4px 14px rgba(214, 214, 214, 0.24);
+    margin: 0 0 50px;
+    padding: 20px 20px 10px;
+    position: relative; /* Needed for the menu toggle positioning */
+}
+
+.property-tabs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.property-tabs ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.property-tabs ul li a {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #0E0E46;
+    border-radius: 10px;
+    margin: 0 0 10px;
+    padding: 0.875rem 1.25rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.property-tabs ul li a.active {
+    background: #d63d40;
+    color: #FFF;
+}
+
+.property-tabs ul li a:hover {
+    color: white;
+    background: #d63d40;
+}
+
+/* Hamburger Icon Styles */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    margin-bottom: 20px; /* Spacing between hamburger and menu */
+}
+
+.menu-toggle .bar {
+    display: block;
+    background-color: #0E0E46;
+    height: 3px;
+    width: 25px;
+    margin: 4px auto;
+    transition: 0.3s;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    display: none;
+    text-align: center;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .property-tabs ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .property-tabs ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .property-tabs ul li {
+        display: block;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .stickyclass {
+        position: -webkit-sticky;
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        text-align: center;
+    }
+}
