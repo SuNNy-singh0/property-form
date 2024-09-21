@@ -1,0 +1,257 @@
+body,html{
+    padding: 0px 2px;
+    margin: 0px;
+    overflow-x: hidden;
+    background: radial-gradient(343px at 46.3% 47.5%, rgb(242, 242, 242) 0%, rgb(241, 241, 241) 72.9%);
+}
+
+#upperview{
+    background: url('/public/search.jpg');
+    height: 20vh;
+    width: 100%;
+    color: #ebebeb;
+    background-size: cover;
+    padding: 22px 11px;
+    font-size: 1.3rem;
+    font-family: system-ui;
+    letter-spacing: 4px;
+
+}
+.propertybtn{
+    border: 1.5px solid #c7c3c3;
+    height: 4vh;
+    padding: 2px 4px;
+    width: 22vw;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px; 
+}
+.activeb,.activeb2,.activeb3{
+    border: none;
+    background: linear-gradient(to right, #ff4447, #8a2e2e);
+    color: white;
+    font-weight: 500;
+    font-size: 14px; 
+    width: 22vw;
+    height: 4vh;
+}
+.innerbutton{
+    display: flex;
+}
+.formtext{
+    font-size: 1.1rem;
+    font-family: sans-serif;
+   padding: 3px 8px;
+}
+.formfield{
+    width: 20vw;
+    height: 4vh;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    box-shadow: 2px 3px 2px #e1dddd;
+}
+.formfield-b{
+    width: 20vw;
+    height: 4vh;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    box-shadow: 2px 3px 2px #e1dddd;
+    text-align: center;
+}
+.formfield-a{
+    
+    width: 43vw;
+    height: 4vh;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 2px 3px 2px #e1dddd;
+}
+.formfield-c{
+    width: 59vw;
+    height: 11vh;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 2px 3px 2px #e1dddd;
+}
+.formfield-d{
+    width: 26vw;
+    margin: 0px 2px;
+}
+.part1,.part2,.part4,.part5{
+    display: flex;
+    flex-direction: column;
+    margin: 2vh 1vw;
+    padding: 10px 5px;
+    background: white;
+    border-radius: 13px;
+}
+.partition{
+    padding: 12px 3px;
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 5px;
+}
+.part4{
+    margin: 4vh 1vw;
+    padding: 20px 8px;
+}
+.partition2{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    margin-top: 0vh;
+    gap: 17px;
+}
+button:hover{
+    outline: none !important;
+}
+.save{
+    border: 2px solid #d1d0d0;
+    margin-left: 6%;
+    padding: 5px 35px;
+    border-radius: 12px;
+    background: linear-gradient(to right, #ff4447, #8a2e2e);
+    color: white;
+    margin-bottom: 10px;
+}
+.part3{
+    display: flex;
+    flex-direction: column;
+    margin: 2vh 1vw;
+    padding: 39px 34px;
+    background: white;
+    border-radius: 13px;
+}
+.checkbox-true {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(51px, 1fr));
+    /* Adjust column size */
+    gap: 10px;
+    /* Space between grid items */
+  }
+  .custom {
+    display: contents;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    /* Adjust as needed */
+    position: relative;
+    padding: 5px;
+    outline :none;
+    /* Add padding around each checkbox for spacing */
+  }
+  
+  .custom input[type="checkbox"] {
+    display: none;
+  }
+  
+  .custom .checkmk {
+    width: 25px;
+    height: 26px;
+    background-color: white;
+    border: 2px solid #a5a1a1;
+    position: relative;
+    margin: 10px;
+    border-radius: 5px;
+    outline: none;
+    
+  }
+  
+  .custom p.fieldname {
+    margin: 0;
+    padding-right: 30px;
+    /* Space for the checkmark */
+  }
+  
+  .custom input[type="checkbox"]:checked~.checkmk {
+    outline: none;
+    background-color: white;
+    /* Background color when checked */
+    border-color: black;
+    /* Border color when checked */
+  }
+  
+  .custom input[type="checkbox"]:checked~.checkmk::after {
+    content: "✔";
+    /* Unicode for check mark */
+    position: absolute;
+    top: 45%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    color: red;
+    /* Color of the tick mark */
+    font-size: 14px;
+    outline: none;
+    /* Adjust size */
+  }
+  .custom-file-input {
+    font-size: 16px;
+    text-transform: capitalize;
+    border: none;
+    border-radius: 10px;
+    background-color: #df3f3a;
+    color: white;
+    padding: 7px 7px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0px;
+    font-family: arial;
+}
+.fieldvalue4 {
+    display: none;
+  }
+  .btn2 {
+    display: block;
+    width: 57vw;
+    margin: 0px 77px;
+    height: 5vh;
+    border-radius: 10px;
+    background-color: lightslategrey;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 3px;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  #last{
+    background: #a5a1a1 !important;
+
+  }
+  #first{
+    background: #a5a1a1 !important;
+
+  }
+  svg {
+    vertical-align: bottom;
+    width: 22px;
+    height: 30px;
+}
+#property{
+    margin-left: 2vw;
+    border: 2px solid rgb(192, 192, 192);
+    padding: 10px 4px;
+    width: 97%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-top: 2vh;
+ }
+@media only screen and (max-width: 480px){
+    #property{
+        margin-left: 2vw;
+        border: 2px solid rgb(192, 192, 192);
+        padding: 10px 4px;
+        width: 97%;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 500;
+        border-radius: 10px;
+        margin-top: 2vh;
+     }
+}

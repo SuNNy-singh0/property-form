@@ -22,9 +22,9 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+/* button:hover {
   background-color: lightgray;
-}
+} */
 
 button.active {
   background-color: #d63d40;
@@ -230,7 +230,7 @@ option:hover {
   margin-right: 32.5vw;
 }
 
-.container {
+.container3 {
   display: block;
   float: right;
   margin-left: 1vw;
@@ -513,7 +513,7 @@ option:hover {
     margin-right: 35.5vw;
   }
 
-  .container {
+  .container3 {
     display: inline-block;
     margin-left: 1vw;
     width: 100%;
@@ -578,7 +578,7 @@ option:hover {
     max-width: 70vw;
   }
 
-  .container {
+  .container3 {
     text-align: center;
     align-items: center;
   }

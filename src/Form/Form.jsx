@@ -254,7 +254,7 @@ function Form() {
       </div>
       <div>
         <>
-          <div className='container2'>
+          <div className='container'>
             <div className="property-tabs stickyclass">
               <div className="menu-toggle" onClick={toggleMenu}>
                 <span className="bar"></span>
@@ -296,6 +296,7 @@ function Form() {
 
         <div><h1 id='head'>property form </h1>
           <button className={activeButton === 'sale' ? 'active' : ''}
+            
             onClick={() => {
               setresitype('sale');
               handleButtonClick('sale');
@@ -358,7 +359,7 @@ function Form() {
           </div>
           {(residential === 'apartment' || residential === 'house/villa' || residential === 'builderfloor' || residential === 'farmhouse' || residential === 'plot') && (
             <>
-              <div className='container'>
+              <div className='container3'>
                 <form onSubmit={handleSubmit}>
                   <div id='propertyimf'>
                     <div className='fieldbox fieldbox2'>
@@ -553,6 +554,7 @@ function Form() {
                             >
                               <option value='Ready to Move'>Ready to Move</option>
                               <option value='Under-Construction'>Under Construction</option>
+                              <option value='NewLaunch'>New Launch</option>
                             </select>
                             <label className='fieldname'> possesion date</label>
                             <input className='fieldvalue' type='date' name='propertydate' value={formdata.propertydate} onChange={handleChange}></input>
