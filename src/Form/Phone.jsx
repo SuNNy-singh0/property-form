@@ -615,6 +615,7 @@ function Phone() {
                                                 { name: 'EV Charge', icon: <FaChargingStation /> },
                                                 { name: 'Club House', icon: <PiWarehouseLight /> }
                                             ].map((amenity, index) => (
+                                                <div>
                                                 <label key={index} className='custom'>
                                                     <input
                                                         type="checkbox"
@@ -627,6 +628,7 @@ function Phone() {
                                                     </p>
                                                     <span className='checkmk'></span>
                                                 </label>
+                                                </div>
                                             ))}
                                         </div>
 
