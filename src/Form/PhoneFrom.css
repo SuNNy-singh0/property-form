@@ -101,11 +101,11 @@ body,html{
     margin: 4vh 1vw;
     padding: 20px 8px;
 }
-.partition2{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
-    margin-top: 0vh;
-    gap: 17px;
+.partition2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Increased minimum width */
+  margin-top: 0;
+  gap: 20px; /* Slightly increased gap for better spacing */
 }
 button:hover{
     outline: none !important;
@@ -118,6 +118,8 @@ button:hover{
     background: linear-gradient(to right, #ff4447, #8a2e2e);
     color: white;
     margin-bottom: 10px;
+    width: 27vw;
+    height: 5vh;
 }
 .part3{
     display: flex;
@@ -128,80 +130,70 @@ button:hover{
     border-radius: 13px;
 }
 .checkbox-true {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(51px, 1fr));
-    /* Adjust column size */
-    gap: 10px;
-    /* Space between grid items */
-  }
-  .custom {
-    display: contents;
-    align-items: center;
-    cursor: pointer;
-    font-size: 16px;
-    /* Adjust as needed */
-    position: relative;
-    padding: 5px;
-    outline :none;
-    /* Add padding around each checkbox for spacing */
-  }
-  
-  .custom input[type="checkbox"] {
-    display: none;
-  }
-  
-  .custom .checkmk {
-    width: 25px;
-    height: 26px;
-    background-color: white;
-    border: 2px solid #a5a1a1;
-    position: relative;
-    margin: 10px;
-    border-radius: 5px;
-    outline: none;
-    
-  }
-  
-  .custom p.fieldname {
-    margin: 0;
-    padding-right: 30px;
-    /* Space for the checkmark */
-  }
-  
-  .custom input[type="checkbox"]:checked~.checkmk {
-    outline: none;
-    background-color: white;
-    /* Background color when checked */
-    border-color: black;
-    /* Border color when checked */
-  }
-  
-  .custom input[type="checkbox"]:checked~.checkmk::after {
-    content: "✔";
-    /* Unicode for check mark */
-    position: absolute;
-    top: 45%;
-    left: 53%;
-    transform: translate(-50%, -50%);
-    color: red;
-    /* Color of the tick mark */
-    font-size: 14px;
-    outline: none;
-    /* Adjust size */
-  }
-  .custom-file-input {
-    font-size: 16px;
-    text-transform: capitalize;
-    border: none;
-    border-radius: 10px;
-    background-color: #df3f3a;
-    color: white;
-    padding: 7px 7px;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 0px;
-    font-family: arial;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Space between items */
 }
+
+.custom {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 5px; /* Padding for button-like appearance */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
+  transition: background 0.3s, border-color 0.3s;
+  position: relative; /* Position for the tick */
+}
+
+.custom:hover {
+  background: #e6f7ff; /* Light blue on hover */
+  border-color: #007bff; /* Change border color on hover */
+}
+
+.custom.selected {
+  background: #007bff; /* Background when selected */
+  color: white; /* Text color when selected */
+  border-color: #0455ab; /* Darker border color when selected */
+}
+
+.checkmk {
+  width: 18px; /* Size of the tick mark */
+  height: 18px;
+  border: 2px solid white; /* Color of the checkbox border */
+  border-radius: 3px;
+  background: transparent;
+  margin-right: 10px; /* Space between tick and text */
+  position: absolute; /* Position for the tick */
+  top: 50%; /* Center vertically */
+  left: 10px; /* Space from the left */
+  transform: translateY(-50%); /* Centering adjustment */
+  display: none; /* Hide by default */
+}
+
+.custom.selected .checkmk {
+  display: block; /* Show tick when selected */
+}
+
+.custom.selected .checkmk::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.fieldname2 {
+  margin: 0px 3px; /* Reset margin for better alignment */
+  font-size: 14px; /* Adjust font size */
+  color: #333; /* Text color */
+}
+
 .fieldvalue4 {
     display: none;
   }
@@ -217,6 +209,8 @@ button:hover{
     letter-spacing: 3px;
     font-weight: 400;
     text-transform: capitalize;
+    text-align: center;
+    padding: 12px 156px;
   }
   #last{
     background: #a5a1a1 !important;
@@ -242,6 +236,18 @@ button:hover{
     border-radius: 10px;
     margin-top: 2vh;
  }
+ .partition3{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ }
+ #submit{
+  display: flex;
+  justify-content: center;
+ }
+ @media only screen and (max-width: 400px) {
+  
+ }
 @media only screen and (max-width: 480px){
     #property{
         margin-left: 2vw;
@@ -254,4 +260,23 @@ button:hover{
         border-radius: 10px;
         margin-top: 2vh;
      }
+     .save {
+      border: 2px solid #d1d0d0;
+      margin-left: 6%;
+      padding: 5px 1px;
+      border-radius: 12px;
+      background: linear-gradient(to right, #ff4447, #8a2e2e);
+      color: white;
+      margin-bottom: 10px;
+      width: 41vw;
+      height: 5vh;
+  }
+}
+@media only screen and (max-width: 860px){
+  .partition {
+    justify-content: space-between;
+}
+.formfield{
+  width: 17vw;
+}
 }

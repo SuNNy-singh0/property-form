@@ -186,7 +186,7 @@ function Phone() {
         <>
             <div className='formbody'>
                 <div id='upperview'>
-                    <h1>Property Listing Form</h1>
+                    {/* <h1>Property Listing Form</h1> */}
                 </div>
 
                 <>
@@ -334,8 +334,8 @@ function Phone() {
                                     </div>
 
                                 </div>
-                                <div className='partition' 
-                                    style={{ display: visiblepart1 ? 'block' : 'none' }}>
+                                <div className='partition3' 
+                                    style={{ display: visiblepart1 ? 'flex' : 'none' }}>
                                     <button className='save' id='first' disabled onClick={() => {
                                     
                                     }}>back</button>
@@ -529,7 +529,7 @@ function Phone() {
                                     )}
                                     <div className='partition'>
                                         <label className='formtext'>Price:</label>
-                                        <input type='number' className='formfield' name='price' onChange={handleChange} value={formdata.price} required></input>
+                                        <input type='number' placeholder='e.g 2.10' className='formfield' name='price' onChange={handleChange} value={formdata.price} required></input>
                                         <select
                                             className='formfield'
                                             name='pricerange'
@@ -558,14 +558,14 @@ function Phone() {
 
                                     <div className='partition'>
                                         <label className='formtext'>Token amount:</label>
-                                        <input type='number' className='formfield-a' name='tokenamount' onChange={handleChange} value={formdata.tokenamount}></input>
+                                        <input type='number' placeholder='eg.50000' className='formfield-a' name='tokenamount' onChange={handleChange} value={formdata.tokenamount}></input>
                                     </div>
 
 
                                 </div>
 
-                                <div className='partition'
-                                    style={{ display: visiblepart2 ? 'block' : 'none' }}>
+                                <div className='partition3'
+                                    style={{ display: visiblepart2 ? 'flex' : 'none' }}>
                                     <button className='save' onClick={() => {
                                         setvisiblepart1(true);
                                         setvisiblepart2(false);
@@ -673,16 +673,20 @@ function Phone() {
 
 
                                 </div>
-                                <div className='partition'
-                                    style={{ display: visiblepart3 ? 'block' : 'none' }}>
+                                <div className='partition3'
+                                    style={{ display: visiblepart3 ? 'flex' : 'none' }}>
+                                    <div>
                                     <button className='save' onClick={() => {
                                         setvisiblepart2(true);
                                         setvisiblepart3(false);
                                     }}>back</button>
+                                    </div>
+                                    <div>
                                     <button className='save' onClick={() => {
                                         setvisiblepart3(false);
                                         setvisiblepart4(true);
                                     }}>Save & Next</button>
+                                    </div>
                                 </div>
                                 <div className='formbox'
                                     style={{ display: visiblepart4 ? 'block' : 'none' }}>
@@ -696,27 +700,35 @@ function Phone() {
                                 >
 
                                     <div className='partition2'>
-
+                                        <div>
                                         <label className='formtext'>Metro</label><input className='formfield' type='number' name='metro' value={formdata.metro} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
+                                        <div>
                                         <label className='formtext'>Bus</label><input className='formfield' type='number' name='bus' value={formdata.bus} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
+                                        <div>
+                                       
                                         <label className='formtext'>School</label><input className='formfield' type='number' name='school' value={formdata.school} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
+                                        <div>
                                         <label className='formtext'>Hospital</label><input className='formfield' type='number' name='hospital' value={formdata.hospital} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
+                                        <div>
                                         <label className='formtext'>Mall</label><input className='formfield' type='number' name='mall' value={formdata.mall} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
+                                        <div>
+                                        
                                         <label className='formtext'>Resturant: </label><input className='formfield' type='number' name='resturant' value={formdata.resturant} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
+                                        <div>
                                         <label className='formtext'>Cinema: </label><input className='formfield' type='number' name='cinema' value={formdata.cinema} onChange={handleChange} placeholder='in Km'></input>
-
+                                        </div>
                                     </div>
 
                                 </div>
 
-                                <div className='partition'
-                                    style={{ display: visiblepart4 ? 'block' : 'none' }}>
+                                <div className='partition3'
+                                    style={{ display: visiblepart4 ? 'flex' : 'none' }}>
                                     <button className='save' onClick={() => {
                                         setvisiblepart3(true);
                                         setvisiblepart4(false);
@@ -795,8 +807,8 @@ function Phone() {
                                         )}
                                     
                                 </div>
-                                <div className='partition'
-                                    style={{ display: visiblepart5 ? 'block' : 'none' }}>
+                                <div className='partition3'
+                                    style={{ display: visiblepart5 ? 'flex' : 'none' }}>
                                     <button className='save' onClick={() => {
                                         setvisiblepart4(true);
                                         setvisiblepart5(false);
@@ -806,9 +818,11 @@ function Phone() {
                                     disabled
                                     >Save & next</button>
                                 </div>
+                                <div id='submit'>
                                 <button type='submit'
                                 style={{ display: visiblepart5 ? 'block' : 'none' }}
                                 className='btn2'>submit</button>
+                                </div>
                             </>
                         )
                     }
