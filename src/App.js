@@ -9,14 +9,14 @@ function App() {
   return (
     <div className="App">
      {/* <Form></Form> */}
-     <Phone/>
+     {/* <Phone/> */}
      {/* <SearchBar/> */}
-     {/* <Router>
+     <Router>
       <PhoneSearchbar />
       <Routes>
         <Route path="/search/:name" element={<PhoneSearch />} />
       </Routes>
-    </Router> */}
+    </Router>
     </div>
   );
 }

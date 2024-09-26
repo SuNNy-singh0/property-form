@@ -13,6 +13,8 @@ const SearchBar = () => {
   const [minValue, set_minValue] = useState(5);
   const [maxValue, set_maxValue] = useState(2000);
   const [isVisible, setIsVisible] = useState(true); 
+  const [plot,setplot] = useState(false);
+  const [newproject,setnewproject] = useState(false);
   const handleInput = (e) => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
@@ -47,6 +49,8 @@ const SearchBar = () => {
               handleBtnClick('Rent')
               setbtntype('rent');
               setIsVisible(true);
+              setnewproject(false);
+              setplot(false);
             }
             }
           >
@@ -60,6 +64,8 @@ const SearchBar = () => {
               handleBtnClick('Buy')
               setbtntype('buy');
               setIsVisible(true);
+              setnewproject(false);
+              setplot(false);
             }
 
             }
@@ -74,6 +80,8 @@ const SearchBar = () => {
               handleBtnClick('Commercial')
               setbtntype('commercial');
               setIsVisible(true);
+              setnewproject(false);
+              setplot(false);
             }
             }
           >
@@ -87,6 +95,8 @@ const SearchBar = () => {
               handleBtnClick('NewProjects')
               setbtntype('newproject')
               setIsVisible(false);
+              setnewproject(true);
+              setplot(false);
             }
             }
           >
@@ -99,6 +109,8 @@ const SearchBar = () => {
             onClick={() => {
               handleBtnClick('PlotLand')
               setbtntype('plotland')
+              setnewproject(false);
+              setplot(true);
             }
             }
           >
@@ -108,7 +120,9 @@ const SearchBar = () => {
         </div>
         <br></br>
         <div className='homeBlackBox'>
-          <div className="search-bar">
+          <div className="search-bar" style={{
+            gap:plot ? '56px':'15px'
+          }}>
             <div className="search-bar-item">
               <select value={city} onChange={(e) => setCity(e.target.value)}>
                 <option value="">Select City</option>
@@ -124,7 +138,11 @@ const SearchBar = () => {
                 {/* Add more options as needed */}
               </select>
             </div>
-            <div className="search-bar-item">
+            <div className="search-bar-item" style={{
+              width:newproject ? '17vw':'150px'
+              
+            }}
+            >
               <input
                 type="text"
                 value={locality}

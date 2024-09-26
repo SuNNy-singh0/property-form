@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Phonesearch.css'
+import './SearchBar.css'
 import MultiRangeSlider from "multi-range-slider-react";
 import { useLocation,useParams } from 'react-router-dom';
 function PhoneSearch({match}) {
@@ -209,7 +209,7 @@ function PhoneSearch({match}) {
            )}
             </div>
             <div className="search-bar-item">
-              <button  id='search-btn' onClick={handleSearch}>Search</button>
+              <button  id='search-btn hello'  onClick={handleSearch}>Search</button>
             </div>
           
             </div>
