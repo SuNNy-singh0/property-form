@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TbAirConditioning } from "react-icons/tb";
 import { FaSatelliteDish } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa";
@@ -27,10 +27,123 @@ import { GiGrass } from "react-icons/gi";
 import { FaChargingStation } from "react-icons/fa6";
 import { PiWarehouseLight } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
-import './PhoneFrom.css'
+import './EditForm.css'
 
-function Phone() {
-    const [category, setcategory] = useState('residential')
+function FormEdit() {
+
+    const [formdata, setformdata] = useState({
+        pincode: '',
+        city: '',
+        locality: '',
+        property_name: '',
+        address: '',
+        configuration: '',
+        area_detail: '',
+        area_type: '',
+        bathroom: '',
+        balcony: '',
+        description: '',
+        furnish_type: '',
+        rera_id: '',
+        floor_no: '',
+        total_floor: '',
+        property_facing: '',
+        price: '',
+        maintenance_charge: '',
+        token_amount: '',
+        amenities: [],
+        metro: '',
+        school: '',
+        hospital: '',
+        mall: '',
+        resturant: '',
+        bus: '',
+        cinema: '',
+        country: 'india',
+        purpose: '',
+        category: '',
+        residential: '',
+        floorplan: [],
+        photos: [],
+        leased: ''
+    });
+    const dummyjson = {
+        "pincode": "121001",
+        "city": "gurgaon",
+        "locality": "secotr 43",
+        "property_name": "miraj world",
+        "address": "RPS City, Sector 88, Faridabad",
+        "configuration": "1.5BHK",
+        "area_detail": "1400",
+        "area_type": "Built-up area",
+        "bathroom": "2",
+        "balcony": "2",
+        "description": "this is good property",
+        "furnish_type": "Semi furnished",
+        "rera_id": "uprera7xrfddf",
+        "floor_no": "5",
+        "total_floor": "15",
+        "construction_status": "",
+        "property_date": "",
+        "property_facing": "North-East",
+        "price": "90",
+        "maintenance_charge": "1500",
+        "token_amount": "100000",
+        "length": "",
+        "width": "",
+        "montly_rent": "",
+        "securitydeposit": "",
+        "current_lease": "",
+        "remaining_time": "",
+        "boundary_wall": "",
+        "no_of_open_side": "",
+        "floor_allowed": "",
+        "modifyinterior": "",
+        "lock_in_period": "",
+        "pricerange": "Lakh",
+        "money_type": "Rupees",
+        "amenities": [
+            "Air Conditioner",
+            "Wifi",
+            "Intercomm Facility",
+            "Park",
+            "Parking",
+            "Guest Parking",
+            "Security",
+            "CCTV",
+            "Power Backup",
+            "Swimming Pool",
+            "Gym"
+        ],
+        "metro": "2.3",
+        "school": "5.1",
+        "hospital": "2.1",
+        "mall": "7.4",
+        "resturant": "5.0",
+        "bus": "4.2",
+        "cinema": "2.3",
+        "country": "india",
+        "purpose": "sale",
+        "category": "residential",
+        "residential": "apartment",
+        "floorplan": [
+            "Pi7_DDA8.png",
+            "Pi7_DDA10.png",
+            "Pi7_DDA9.png"
+        ],
+        "photos": [
+            "sobha2.jpg",
+            "sobha3.jpg",
+            "sobha4.jpg",
+            "sobha5.jpg",
+            "sobha6.jpg",
+            "sobha7.jpg"
+        ],
+        "Commercail": "",
+        "leased": "no"
+    }
+
+    const [category, setcategory] = useState(formdata.category)
     const [sold, setsold] = useState('')
     const [floorplan, setfloorplan] = useState();
     const [photos, setphotos] = useState();
@@ -38,107 +151,25 @@ function Phone() {
     const [residential, setresidential] = useState('')
     const [commercial, setcommercial] = useState('')
     const [leased, setleased] = useState('no')
-    const [activeButton, setActiveButton] = useState('');
-    const [activeButton2, setActiveButton2] = useState('');
-    const [activeButton3, setActiveButton3] = useState('');
-    const [activeButton4, setActiveButton4] = useState('');
+    const [activeButton, setActiveButton] = useState(formdata.purpose);
+    const [activeButton2, setActiveButton2] = useState(formdata.category);
+    const [activeButton3, setActiveButton3] = useState(formdata.residential);
+    const [activeButton4, setActiveButton4] = useState(formdata.commercial);
     const [isOpen, setIsOpen] = useState(false);
     const [visiblepart1, setvisiblepart1] = useState(true)
     const [visiblepart2, setvisiblepart2] = useState(false)
     const [visiblepart3, setvisiblepart3] = useState(false)
     const [visiblepart4, setvisiblepart4] = useState(false)
     const [visiblepart5, setvisiblepart5] = useState(false)
-    
-    const initialdata = {
-        'pincode': '',
-        'city': '',
-        'locality': '',
-        'property_name': '',
-        'address': '',
-        'configuration': '',
-        'area_detail': '',
-        'area_type': '',
-        'bathroom': '',
-        'balcony': '',
-        'description': '',
-        'furnish_type': '',
-        'rera_id': '',
-        'floor_no': '',
-        'total_floor': '',
-        'construction_status': '',
-        'property_date': '',
-        'property_facing': '',
-        'price': '',
-        'maintenance_charge': '',
-        'token_amount': '',
-        'length': '',
-        'width': '',
-        'montly_rent': '',
-        'securitydeposit': '',
-        'current_lease': '',
-        'remaining_time': '',
-        'boundary_wall': '',
-        'no_of_open_side': '',
-        'floor_allowed': '',
-        'modifyinterior': '',
-        'lock_in_period': '',
-        'pricerange': 'Lakh',
-        'money_type': 'Rupees',
-        amenities: [],
-        'metro': '',
-        'school': '',
-        'hospital': '',
-        'mall': '',
-        'resturant': '',
-        'bus': '',
-        'cinema': '',
-        'country': 'india'
-    }
-    const [formdata, setformdata] = useState({
-        'pincode': '',
-        'city': '',
-        'locality': '',
-        'property_name': '',
-        'address': '',
-        'configuration': '',
-        'area_detail': '',
-        'area_type': '',
-        'bathroom': '',
-        'balcony': '',
-        'description': '',
-        'furnish_type': '',
-        'rera_id': '',
-        'floor_no': '',
-        'total_floor': '',
-        'construction_status': '',
-        'property_date': '',
-        'property_facing': '',
-        'price': '',
-        'maintenance_charge': '',
-        'token_amount': '',
-        'length': '',
-        'width': '',
-        'montly_rent': '',
-        'securitydeposit': '',
-        'current_lease': '',
-        'remaining_time': '',
-        'boundary_wall': '',
-        'no_of_open_side': '',
-        'floor_allowed': '',
-        'modifyinterior': '',
-        'lock_in_period': '',
-        'pricerange': 'Lakh',
-        'money_type': 'Rupees',
-        amenities: [],
-        'metro': '',
-        'school': '',
-        'hospital': '',
-        'mall': '',
-        'resturant': '',
-        'bus': '',
-        'cinema': '',
-        'country': 'india'
-    })
+    useEffect(() => {
+        setformdata(dummyjson);
+        setpurpose(dummyjson.purpose); // Set initial purpose
+        setcategory(dummyjson.category); // Set initial category
+        setresidential(dummyjson.residential); // Set initial residential type
+        setActiveButton(dummyjson.purpose); // Set initial active button for purpose
+        setActiveButton2(dummyjson.category); // Set initial active button for category
+        setActiveButton3(dummyjson.residential);
+    }, []);
     const handleButtonClick = (buttonName) => {
         setActiveButton(buttonName); // Set the active button when clicked
     };
@@ -149,40 +180,56 @@ function Phone() {
         setActiveButton3(buttonName); // Set the active button when clicked
     };
     const handleChange = (event) => {
-        const { name, value, type, checked } = event.target;
+        const { name, value, checked } = event.target;
 
-        if (type === 'checkbox') {
-            handleCheckboxChange(name, value, checked);
+        if (name === 'amenities') {
+            setformdata((prevData) => {
+                const updatedAmenities = checked
+                    ? [...prevData.amenities, value]
+                    : prevData.amenities.filter((item) => item !== value);
+                return { ...prevData, amenities: updatedAmenities };
+            });
         } else {
             setformdata((prevData) => ({
                 ...prevData,
                 [name]: value,
             }));
         }
-    };
-    const handleCheckboxChange = (name, value, checked) => {
-        setformdata((prevData) => ({
-            ...prevData,
-            [name]: checked
-                ? [...prevData[name], value]
-                : prevData[name].filter((item) => item !== value),
-        }));
+
     };
     const handleFloorplanChange = (event) => {
         let files = Array.from(event.target.files);
-        if (files.length > 4) {
-            alert('You can upload up to 4 floorplans.');
-            files = files.slice(0, 4);
+
+        // Check if there are more than 4 files
+        if (files.length + formdata.floorplan.length > 4) {
+            alert('You can upload up to 4 floor plans.');
+            files = files.slice(0, 4 - formdata.floorplan.length); // Adjust to only allow the maximum
         }
-        const filenames = files.map((file) => file.name);
-        setfloorplan(filenames);
+
+        const newFloorPlans = files.map((file) => file.name);
+
+        // Append new floor plans to existing ones
+        setformdata((prevData) => ({
+            ...prevData,
+            floorplan: [...prevData.floorplan, ...newFloorPlans]
+        }));
     };
 
-    // Handle multiple photos upload
     const handlePhotosChange = (event) => {
-        const files = Array.from(event.target.files);
-        const filenames = files.map((file) => file.name);
-        setphotos(filenames);
+        let files = Array.from(event.target.files);
+
+        // Limit the total number of attachments if needed
+        if (files.length + formdata.photos.length > 10) {
+            alert('You can upload up to 10 attachments.');
+            files = files.slice(0, 10 - formdata.photos.length);
+        }
+
+        const newPhotos = files.map((file) => file.name);
+
+        setformdata((prevData) => ({
+            ...prevData,
+            photos: [...prevData.photos, ...newPhotos],
+        }));
     };
     const leasedchange1 = (e) => {
         setleased(e.target.value);
@@ -202,20 +249,20 @@ function Phone() {
         console.log('Form submitted:', formDataWithExtras);
         alert('form submitted sucessfully')
     };
-    // const removeFile = (fileName, type) => {
-    //     setformdata(prevData => ({
-    //         ...prevData,
-    //         [type]: prevData[type].filter(file => file !== fileName)
-    //     }));
-    // }
+    const removeFile = (fileName, type) => {
+        setformdata(prevData => ({
+            ...prevData,
+            [type]: prevData[type].filter(file => file !== fileName)
+        }));
+    }
     return (
         <>
             <div className='formbody'>
                 <div id='upperview'>
                     {/* <h1>Property Listing Form</h1> */}
                 </div>
-                
-                <div id='formheading'> Property-Listing Form </div>
+
+                <div id='formheading'> Edit Your Property Detail </div>
                 <>
 
                     {/* Property navigation button */}
@@ -226,27 +273,33 @@ function Phone() {
                                 setpurpose('sale');
                                 handleButtonClick('sale');
                             }}
+
                         >Sale</button>
                         <button className={`propertybtn ${activeButton === 'rent' ? 'activeb' : ''}`}
                             onClick={() => {
                                 setpurpose('rent');
                                 handleButtonClick('rent');
-                            }}>Rent</button>
+                            }}
+
+                        >Rent</button>
 
                         <br></br>
                         <button className={`propertybtn   ${activeButton2 === 'residential' ? 'activeb2' : ''}`}
                             onClick={() => {
                                 setcategory('residential');
                                 handleButtonClick2('residential');
-                            }}>Residential</button>
+                            }}
+                            disabled
+                        >Residential</button>
                         <button className={`propertybtn ${activeButton2 === 'commercial' ? 'activeb2' : ''}`}
                             onClick={() => {
                                 setcategory('commercial');
                                 handleButtonClick2('commercial');
-                            }}>Commercial</button>
+                            }}
+                            disabled>Commercial</button>
 
                     </div>
-                   
+
                     {
                         purpose === 'sale' && category === 'residential' && (
                             <>
@@ -256,32 +309,42 @@ function Phone() {
                                         onClick={() => {
                                             setresidential('apartment');
                                             handleButtonClick3('apartment');
-                                            setformdata(initialdata);
-                                        }}>Apartment</button>
+
+                                        }}
+                                        disabled
+                                    >Apartment</button>
                                     <button className={`propertybtn   ${activeButton3 === 'house/villa' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('house/villa');
                                             handleButtonClick3('house/villa');
-                                            setformdata(initialdata);
-                                        }}>House/villa</button>
+
+                                        }}
+                                        disabled
+                                    >House/villa</button>
                                     <button className={`propertybtn  ${activeButton3 === 'plot' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('plot');
                                             handleButtonClick3('plot');
-                                            setformdata(initialdata);
-                                        }}>Plot</button>
+
+                                        }}
+                                        disabled
+                                    >Plot</button>
                                     <button className={`propertybtn   ${activeButton3 === 'builderfloor' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('builderfloor');
                                             handleButtonClick3('builderfloor');
-                                            setformdata(initialdata);
-                                        }}>Builderfloor</button>
+
+                                        }}
+                                        disabled
+                                    >Builderfloor</button>
                                     <button className={`propertybtn   ${activeButton3 === 'farmhouse' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('farmhouse');
                                             handleButtonClick3('farmhouse');
-                                            setformdata(initialdata);
-                                        }}>Farmhouse</button>
+
+                                        }}
+                                        disabled
+                                    >Farmhouse</button>
                                 </div>
                                 <div className='formbox'
                                     style={{ display: visiblepart1 ? 'block' : 'none' }}>
@@ -292,7 +355,7 @@ function Phone() {
                                             Let's get you started</p>
                                     </div>
                                 </div>
-                         
+
                                 <div className='part1' style={{ display: visiblepart1 ? 'block' : 'none' }}>
                                     <div className='partition'>
                                         <label className='formtext'>Country:</label>
@@ -302,12 +365,13 @@ function Phone() {
                                             onChange={handleChange}
                                             value={formdata.country}
                                             required
-
+                                           disabled
                                         >
                                             <option value='india'>India</option>
                                             <option value='uae'>UAE
                                             </option>
                                             <option value='qatar'>QATAR</option>
+
                                         </select>
                                         <label className='formtext'>City:</label>
                                         <select
@@ -316,7 +380,7 @@ function Phone() {
                                             onChange={handleChange}
                                             value={formdata.city}
                                             required
-
+                                        disabled
                                         >
                                             {formdata.country === 'india' && (
                                                 <>
@@ -343,9 +407,9 @@ function Phone() {
                                     </div>
                                     <div className='partition'>
                                         <label className='formtext'>locality:</label>
-                                        <input type='text' className='formfield-b' placeholder='Enter locality' name='locality' onChange={handleChange} value={formdata.locality}></input>
+                                        <input type='text' disabled className='formfield-b' placeholder='Enter locality' name='locality' onChange={handleChange} value={formdata.locality}></input>
                                         <label className='formtext'>Pincode:</label>
-                                        <input type='text' className='formfield-b' placeholder='Enter Pincode' name='pincode' onChange={handleChange} value={formdata.pincode}></input>
+                                        <input type='text' disabled className='formfield-b' placeholder='Enter Pincode' name='pincode' onChange={handleChange} value={formdata.pincode}></input>
                                     </div>
                                     <div className='partition'>
                                         <label className='formtext'>Property Name:</label>
@@ -354,7 +418,7 @@ function Phone() {
                                     </div>
                                     <div className='partition'>
                                         <label className='formtext'>Property Address:</label>
-                                        <input className='formfield-a' type='text' placeholder='Enter Property address' name='address' onChange={handleChange} value={formdata.address} required>
+                                        <input className='formfield-a' disabled type='text' placeholder='Enter Property address' name='address' onChange={handleChange} value={formdata.address} required>
                                         </input>
                                     </div>
                                     <div className='partition'>
@@ -386,7 +450,7 @@ function Phone() {
                                 <div className='part2' style={{ display: visiblepart2 ? 'block' : 'none' }}>
                                     <div className='partition'>
                                         <label className='formtext' >RERA ID:</label>
-                                        <input type='text' className='formfield-a' placeholder=' example UPRERAPRJ72xx' name='rera_id' onChange={handleChange} value={formdata.rera_id}></input>
+                                        <input type='text' disabled className='formfield-a' placeholder=' example UPRERAPRJ72xx' name='rera_id' onChange={handleChange} value={formdata.rera_id}></input>
                                     </div>
                                     {residential !== 'plot' && (
                                         <>
@@ -511,6 +575,7 @@ function Phone() {
                                                         value={formdata.construction_status}
                                                         onChange={handleChange}
                                                         required
+                                                        disabled
                                                     >
                                                         <option value='Ready to Move'>Ready to Move</option>
                                                         <option value='Under-Construction'>Under Construction</option>
@@ -644,18 +709,18 @@ function Phone() {
                                                 { name: 'EV Charge', icon: <FaChargingStation /> },
                                                 { name: 'Club House', icon: <PiWarehouseLight /> }
                                             ].map((amenity, index) => (
-                                                <div>
-                                                    <label key={index} className='custom'>
+                                                <div key={index}>
+                                                    <label className='custom'>
                                                         <input
                                                             type="checkbox"
                                                             name="amenities"
                                                             value={amenity.name}
+                                                            checked={formdata.amenities.includes(amenity.name)}
                                                             onChange={handleChange}
                                                         />
                                                         <p className='fieldname2'>
-                                                            {amenity.icon && <span className='icon'> <div className='facility_icon'>
-                                                                {amenity.icon}
-                                                            </div></span>} {amenity.name}
+                                                            {amenity.icon && <span className='icon'><div className='facility_icon'>{amenity.icon}</div></span>}
+                                                            {amenity.name}
                                                         </p>
                                                         <span className='checkmk'></span>
                                                     </label>
@@ -678,18 +743,22 @@ function Phone() {
                                                             { name: 'Power Backup', icon: <ImPower /> },
                                                             { name: 'Gas Pipeline', icon: <GiGasStove /> },
                                                         ].map((amenity, index) => (
-                                                            <label key={index} className='custom'>
-                                                                <input
-                                                                    type="checkbox"
-                                                                    name="amenities"
-                                                                    value={amenity.name}
-                                                                    onChange={handleChange}
-                                                                />
-                                                                <p className='fieldname2'>
-                                                                    {amenity.icon && <span className='icon'>{amenity.icon}</span>} {amenity.name}
-                                                                </p>
-                                                                <span className='checkmk'></span>
-                                                            </label>
+                                                            <div key={index}>
+                                                                <label className='custom'>
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        name="amenities"
+                                                                        value={amenity.name}
+                                                                        checked={formdata.amenities.includes(amenity.name)}
+                                                                        onChange={handleChange}
+                                                                    />
+                                                                    <p className='fieldname2'>
+                                                                        {amenity.icon && <span className='icon'><div className='facility_icon'>{amenity.icon}</div></span>}
+                                                                        {amenity.name}
+                                                                    </p>
+                                                                    <span className='checkmk'></span>
+                                                                </label>
+                                                            </div>
                                                         ))}
                                                     </div>
 
@@ -815,7 +884,31 @@ function Phone() {
                                                     </label>
                                                 </div>
                                             </div>
-                                         
+                                            <div className='partition'>
+                                                <div>
+                                                    {formdata.floorplan.length > 0 && (
+                                                        <ul id='floorplanbox'>
+                                                            {formdata.floorplan.map((fileName, index) => (
+
+                                                                <span id='floorplanname'><li key={index}>{fileName}   <MdDelete onClick={() => removeFile(fileName, 'floorplan')} /> </li></span>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    {formdata.photos.length > 0 && (
+                                                        <ul id='photosbox'>
+                                                            {formdata.photos.map((fileName, index) => (
+                                                               <span id='filebox'><li key={index} id='photoName'>
+                                                                    {fileName}
+                                                                    <MdDelete onClick={() => removeFile(fileName, 'photos')} />
+                                                                </li>
+                                                                </span> 
+                                                            ))}
+                                                        </ul>
+                                                    )}
+                                                </div>
+                                            </div>
                                         </>
                                     )}
                                     {residential === 'plot' && (
@@ -853,9 +946,11 @@ function Phone() {
                                 <div id='submit'>
                                     <button type='submit'
                                         style={{ display: visiblepart5 ? 'block' : 'none' }}
-                                        className='btn2 btnx' onClick={handleSubmit}>submit</button>
+                                        className='btn2 btnx' onClick={handleSubmit}>Apply Changes</button>
                                 </div>
-                                
+                                {/* <div className='countryflag'>
+                    <img src='./flag.png'></img>
+                </div> */}
                             </>
                         )
                     }
@@ -870,25 +965,25 @@ function Phone() {
                                         onClick={() => {
                                             setresidential('apartment');
                                             handleButtonClick3('apartment');
-                                            setformdata(initialdata);
+
                                         }}>Apartment</button>
                                     <button className={`propertybtn   ${activeButton3 === 'house/villa' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('house/villa');
                                             handleButtonClick3('house/villa');
-                                            setformdata(initialdata);
+
                                         }}>House/villa</button>
                                     <button className={`propertybtn   ${activeButton3 === 'builderfloor' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('builderfloor');
                                             handleButtonClick3('builderfloor');
-                                            setformdata(initialdata);
+
                                         }}>Builderfloor</button>
                                     <button className={`propertybtn   ${activeButton3 === 'farmhouse' ? 'activeb3' : ''}`}
                                         onClick={() => {
                                             setresidential('farmhouse');
                                             handleButtonClick3('farmhouse');
-                                            setformdata(initialdata);
+
                                         }}>Farmhouse</button>
                                 </div>
                                 <div className='formbox'
@@ -1380,31 +1475,31 @@ function Phone() {
                                     onClick={() => {
                                         setcommercial('officespace');
                                         handleButtonClick3('officespace');
-                                        setformdata(initialdata);
+
                                     }}>OfficeSpace</button>
                                 <button className={`propertybtn   ${activeButton3 === 'shop' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('shop');
                                         handleButtonClick3('shop');
-                                        setformdata(initialdata);
+
                                     }}>Shop</button>
                                 <button className={`propertybtn   ${activeButton3 === 'land' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('land');
                                         handleButtonClick3('land');
-                                        setformdata(initialdata);
+
                                     }}>Land</button>
                                 <button className={`propertybtn   ${activeButton3 === 'coworkingspace' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('coworkingspace');
                                         handleButtonClick3('coworkingspace');
-                                        setformdata(initialdata);
+
                                     }}>Coworking Space</button>
                                 <button className={`propertybtn   ${activeButton3 === 'showroom' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('showroom');
                                         handleButtonClick3('showroom');
-                                        setformdata(initialdata);
+
                                     }}>Coworking Space</button>
                             </div>
                             <div className='formbox'
@@ -1858,7 +1953,7 @@ function Phone() {
                                                             <div className='facility_icon'>
                                                                 {amenity.icon}
                                                             </div>
-                                                            </span>} {amenity.name}
+                                                        </span>} {amenity.name}
                                                     </p>
                                                     <span className='checkmk'></span>
                                                 </label>
@@ -1890,8 +1985,8 @@ function Phone() {
                                                             />
                                                             <p className='fieldname2'>
                                                                 {amenity.icon && <span className='icon'><div className='facility_icon'>
-                                                                {amenity.icon}
-                                                            </div></span>} {amenity.name}
+                                                                    {amenity.icon}
+                                                                </div></span>} {amenity.name}
                                                             </p>
                                                             <span className='checkmk'></span>
                                                         </label>
@@ -2069,31 +2164,31 @@ function Phone() {
                                     onClick={() => {
                                         setcommercial('officespace');
                                         handleButtonClick3('officespace');
-                                        setformdata(initialdata);
+
                                     }}>OfficeSpace</button>
                                 <button className={`propertybtn   ${activeButton3 === 'shop' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('shop');
                                         handleButtonClick3('shop');
-                                        setformdata(initialdata);
+
                                     }}>Shop</button>
                                 <button className={`propertybtn   ${activeButton3 === 'land' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('land');
                                         handleButtonClick3('land');
-                                        setformdata(initialdata);
+
                                     }}>Land</button>
                                 <button className={`propertybtn   ${activeButton3 === 'coworkingspace' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('coworkingspace');
                                         handleButtonClick3('coworkingspace');
-                                        setformdata(initialdata);
+
                                     }}>Coworking Space</button>
                                 <button className={`propertybtn   ${activeButton3 === 'showroom' ? 'activeb3' : ''}`}
                                     onClick={() => {
                                         setcommercial('showroom');
                                         handleButtonClick3('showroom');
-                                        setformdata(initialdata);
+
                                     }}>Coworking Space</button>
                             </div>
                             <div className='formbox'
@@ -2187,8 +2282,8 @@ function Phone() {
 
                                 >Save & next</button>
                             </div>
-                             {/* overview section */}
-                             <div className='formbox'
+                            {/* overview section */}
+                            <div className='formbox'
                                 style={{ display: visiblepart2 ? 'block' : 'none' }}>
 
                                 <div id='property'>
@@ -2256,8 +2351,8 @@ function Phone() {
                                             </div>
 
                                         </div>
-                                     
-                                     
+
+
 
                                         <div className='partition'>
                                             <div>
@@ -2436,7 +2531,7 @@ function Phone() {
                                         value={formdata.pricerange}
                                         required
                                     >
-                                         <option value='thousand'>Thousand</option>
+                                        <option value='thousand'>Thousand</option>
                                         <option value='Lakh'>Lakhs</option>
                                         <option value='Crore'>Crore</option>
                                         <option value='million'>Million</option>
@@ -2455,16 +2550,16 @@ function Phone() {
                                     </select>
                                 </div>
                                 <div className='partition'>
-                            <div>
-                              <label className='formtext'>Security amount:</label>
+                                    <div>
+                                        <label className='formtext'>Security amount:</label>
 
-                              <input type='number' placeholder=' e.g 50000' className='formfield' name='securitydeposit' value={formdata.securitydeposit} onChange={handleChange}></input>
-                            </div>
-                            <div>
-                              <label className='formtext'>Lock in period:</label>
-                              <input type='number' className='formfield' name='lock_in_period' value={formdata.lock_in_period} onChange={handleChange} placeholder='In Years'></input>
-                            </div>
-                          </div>
+                                        <input type='number' placeholder=' e.g 50000' className='formfield' name='securitydeposit' value={formdata.securitydeposit} onChange={handleChange}></input>
+                                    </div>
+                                    <div>
+                                        <label className='formtext'>Lock in period:</label>
+                                        <input type='number' className='formfield' name='lock_in_period' value={formdata.lock_in_period} onChange={handleChange} placeholder='In Years'></input>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -2530,8 +2625,8 @@ function Phone() {
                                                     />
                                                     <p className='fieldname2'>
                                                         {amenity.icon && <span className='icon'><div className='facility_icon'>
-                                                                {amenity.icon}
-                                                            </div></span>} {amenity.name}
+                                                            {amenity.icon}
+                                                        </div></span>} {amenity.name}
                                                     </p>
                                                     <span className='checkmk'></span>
                                                 </label>
@@ -2563,8 +2658,8 @@ function Phone() {
                                                             />
                                                             <p className='fieldname2'>
                                                                 {amenity.icon && <span className='icon'><div className='facility_icon'>
-                                                                {amenity.icon}
-                                                            </div></span>} {amenity.name}
+                                                                    {amenity.icon}
+                                                                </div></span>} {amenity.name}
                                                             </p>
                                                             <span className='checkmk'></span>
                                                         </label>
@@ -2596,7 +2691,7 @@ function Phone() {
                                         setvisiblepart4(true);
                                     }}>Save & Next</button>
                                 </div>
-                            </div>  
+                            </div>
                             <div className='part4'
                                 style={{ display: visiblepart4 ? 'block' : 'none' }}
                             >
@@ -2648,85 +2743,85 @@ function Phone() {
                                 </div>
                             </div>
                             <div className='part5'
-                                    style={{ display: visiblepart5 ? 'block' : 'none' }}
-                                >
+                                style={{ display: visiblepart5 ? 'block' : 'none' }}
+                            >
 
-                                    {commercial !== 'land' && (
-                                        <>
-                                            <div className='partition'>
-                                                <div>
-                                                    <label className='formtext'>Floor Plan:</label>
-                                                    <input
-                                                        className='fieldvalue4'
-                                                        type="file"
-                                                        name="floorplan"
-                                                        id="floorplan"
-                                                        onChange={handleFloorplanChange}
-                                                        multiple
-                                                        accept=".jpg,.png,.pdf"
-                                                    />
-                                                    <label htmlFor="floorplan" className='file_upload'>
-                                                        Choose Floor Plan
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <label className='formtext'>Attachment: </label>
-                                                    <input
-                                                        className='fieldvalue4'
-                                                        type="file"
-                                                        name="photos"
-                                                        id="photos"
-                                                        onChange={handlePhotosChange}
-                                                        multiple
-                                                        accept=".jpg,.png"
-                                                    />
-                                                    <label htmlFor="photos" className='file_upload'>
-                                                        Choose Attachment
-                                                    </label>
-                                                </div>
+                                {commercial !== 'land' && (
+                                    <>
+                                        <div className='partition'>
+                                            <div>
+                                                <label className='formtext'>Floor Plan:</label>
+                                                <input
+                                                    className='fieldvalue4'
+                                                    type="file"
+                                                    name="floorplan"
+                                                    id="floorplan"
+                                                    onChange={handleFloorplanChange}
+                                                    multiple
+                                                    accept=".jpg,.png,.pdf"
+                                                />
+                                                <label htmlFor="floorplan" className='file_upload'>
+                                                    Choose Floor Plan
+                                                </label>
                                             </div>
-                                        </>
-                                    )}
-                                    {commercial==='land' && (
-                                        <>
+
+                                            <div>
+                                                <label className='formtext'>Attachment: </label>
+                                                <input
+                                                    className='fieldvalue4'
+                                                    type="file"
+                                                    name="photos"
+                                                    id="photos"
+                                                    onChange={handlePhotosChange}
+                                                    multiple
+                                                    accept=".jpg,.png"
+                                                />
+                                                <label htmlFor="photos" className='file_upload'>
+                                                    Choose Attachment
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
+                                {commercial === 'land' && (
+                                    <>
                                         <div className='partition'>
 
-                                                <div>
-                                                    <label className='formtext'> Upload Attachment: </label>
-                                                    <input
-                                                        className='fieldvalue4'
-                                                        type="file"
-                                                        name="photos"
-                                                        id="photos"
-                                                        onChange={handlePhotosChange}
-                                                        multiple
-                                                        accept=".jpg,.png"
-                                                    />
-                                                    <label htmlFor="photos" className='file_upload'>
-                                                        Choose Attachment
-                                                    </label>
-                                                </div>
+                                            <div>
+                                                <label className='formtext'> Upload Attachment: </label>
+                                                <input
+                                                    className='fieldvalue4'
+                                                    type="file"
+                                                    name="photos"
+                                                    id="photos"
+                                                    onChange={handlePhotosChange}
+                                                    multiple
+                                                    accept=".jpg,.png"
+                                                />
+                                                <label htmlFor="photos" className='file_upload'>
+                                                    Choose Attachment
+                                                </label>
                                             </div>
-                                        </>
-                                    )}
-                                </div>
-                                <div className='partition3'
-                                    style={{ display: visiblepart5 ? 'flex' : 'none' }}>
-                                    <button className='save' onClick={() => {
-                                        setvisiblepart4(true);
-                                        setvisiblepart5(false);
-                                    }}>back</button>
-                                    <button id='last' className='save' onClick={() => {
-                                    }}
-                                        disabled
-                                    >Save & next</button>
-                                </div>
-                                <div id='submit'>
-                                    <button type='submit'
-                                        style={{ display: visiblepart5 ? 'block' : 'none' }}
-                                        className='btn2 btnx' onClick={handleSubmit}>submit</button>
-                                </div>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                            <div className='partition3'
+                                style={{ display: visiblepart5 ? 'flex' : 'none' }}>
+                                <button className='save' onClick={() => {
+                                    setvisiblepart4(true);
+                                    setvisiblepart5(false);
+                                }}>back</button>
+                                <button id='last' className='save' onClick={() => {
+                                }}
+                                    disabled
+                                >Save & next</button>
+                            </div>
+                            <div id='submit'>
+                                <button type='submit'
+                                    style={{ display: visiblepart5 ? 'block' : 'none' }}
+                                    className='btn2 btnx' onClick={handleSubmit}>submit</button>
+                            </div>
                         </>
                     )}
                 </>
@@ -2735,4 +2830,4 @@ function Phone() {
     )
 }
 
-export default Phone
+export default FormEdit

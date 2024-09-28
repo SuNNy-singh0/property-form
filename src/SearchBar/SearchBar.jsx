@@ -19,18 +19,24 @@ const SearchBar = () => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
   };
+  const [purpose,setpurpose] = useState('');
+  const [category,setcategory] = useState('');
+  const [residential,setresidential] = useState('');
+  const [commercial,setcommercial]=useState('');
+  const [construction_status,setconstruction_status]=useState('');
   const handleSearch = () => {
     // Implement search functionality here
     const searchData = {
       city: city || undefined,
       locality: locality || undefined,
       configuration: configuration || undefined,
-      unitType: unitType || undefined,
-      btntype: btntype || undefined,
+      residential:residential||undefined,
+      commercial:commercial||undefined,
+      purpose:purpose||undefined,
       minValue: minValue || undefined,
       maxValue: maxValue || undefined,
-      saleType: saleType || undefined,
-      resitype: resitype || undefined,
+      construction_status:construction_status||undefined,
+      category: category|| undefined,
     };
     console.log(searchData);
   };
@@ -51,6 +57,11 @@ const SearchBar = () => {
               setIsVisible(true);
               setnewproject(false);
               setplot(false);
+              setpurpose('rent');
+              setcategory('residential')
+              setconstruction_status('');
+              setresidential('apartment');
+              setcommercial('');
             }
             }
           >
@@ -66,6 +77,11 @@ const SearchBar = () => {
               setIsVisible(true);
               setnewproject(false);
               setplot(false);
+              setpurpose('Sale');
+              setcategory('residential')
+              setconstruction_status('');
+              setresidential('apartment');
+              setcommercial('');
             }
 
             }
@@ -82,6 +98,11 @@ const SearchBar = () => {
               setIsVisible(true);
               setnewproject(false);
               setplot(false);
+              setpurpose('Sale');
+              setcategory('commercial')
+              setconstruction_status('');
+              setresidential('');
+              setConfiguration('');
             }
             }
           >
@@ -97,6 +118,12 @@ const SearchBar = () => {
               setIsVisible(false);
               setnewproject(true);
               setplot(false);
+              setpurpose('Sale');
+              setcategory('')
+              setconstruction_status('newlaunch');
+              setresidential('');
+              setcommercial('');
+              setConfiguration('');
             }
             }
           >
@@ -111,6 +138,12 @@ const SearchBar = () => {
               setbtntype('plotland')
               setnewproject(false);
               setplot(true);
+              setpurpose('Sale');
+              setcategory('')
+              setconstruction_status('');
+              setresidential('plot')
+              setcommercial('land')
+              setConfiguration('');
             }
             }
           >
@@ -120,7 +153,7 @@ const SearchBar = () => {
         </div>
         <br></br>
         <div className='homeBlackBox'>
-          <div className="search-bar" style={{
+          <div className="search-bar mysearchbar" style={{
             gap:plot ? '56px':'15px'
           }}>
             <div className="search-bar-item">
@@ -168,17 +201,23 @@ const SearchBar = () => {
               <>
                <select value={saleType} onChange={(e) => setsaleType(e.target.value)}>
                 <option value="">Buy Or Rent</option>
-                <option value="buy">Buy</option>
-                <option value="rent">Rent</option>
+                <option value="buy" onClick={()=>{
+                  setpurpose('sale');
+                }}>Buy</option>
+                <option value="rent" 
+                onClick={()=>{
+                  setpurpose('residential')
+                }}
+                >Rent</option>
               </select>
               </>
             )}
             {btntype ==='newproject' &&(
             <>
-              <select value={resitype} onChange={(e) => setresitype(e.target.value)}>
+              <select value={category} onChange={(e) => setcategory(e.target.value)}>
                     <option value="">Select Property type</option>
-                    <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
+                    <option value="residential" >Residential</option>
+                    <option value="commercial" >Commercial</option>
                   </select>
             </>
            )}
@@ -188,7 +227,7 @@ const SearchBar = () => {
             >
               {(btntype === 'rent' || btntype === 'buy') && (
                 <>
-                  <select value={unitType} onChange={(e) => setUnitType(e.target.value)}>
+                  <select value={residential} onChange={(e) => setresidential(e.target.value)}>
                     <option value="">Select Unit Type</option>
                     <option value="apartment">Apartment</option>
                     <option value="housevilla">House/Villa</option>
@@ -199,7 +238,7 @@ const SearchBar = () => {
               )}
               {btntype === 'commercial' && (
                 <>
-                  <select value={unitType} onChange={(e) => setUnitType(e.target.value)}>
+                  <select value={commercial} onChange={(e) => setcommercial(e.target.value)}>
                     <option value="">Select Unit Type</option>
                     <option value="officespace">OfficeSpace</option>
                     <option value="shop">Shop</option>
@@ -214,13 +253,14 @@ const SearchBar = () => {
               {(btntype !== 'rent' && saleType ==='buy') && (
 
                 <>
-                  <span className='price'>
+                  <span id='price_value '>
                     Price: {minValue > 100 ? (minValue / 100).toLocaleString() + ' Cr' : minValue.toLocaleString() + ' L'} -
                     {maxValue > 100 ? (maxValue / 100).toLocaleString() + ' Cr' : maxValue.toLocaleString() + ' L'}
                   </span>
 
                   <br></br>
                   <MultiRangeSlider
+                    
                     className='slider'
                     min={5}
                     max={2000}
@@ -238,7 +278,7 @@ const SearchBar = () => {
                 </>
               )}
               {(btntype === 'rent' || saleType ==='rent') && (<>
-                <span className='price'>
+                <span id='price_value'>
                   Price: {minValue > 100 ? (minValue / 100).toLocaleString() + ' L' : minValue.toLocaleString() + 'K'} -
                   {maxValue > 100 ? (maxValue / 100).toLocaleString() + ' L' : maxValue.toLocaleString() + ' k'}
                 </span>

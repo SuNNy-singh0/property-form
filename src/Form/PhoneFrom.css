@@ -17,6 +17,14 @@ body,html{
     letter-spacing: 4px;
 
 }
+#formheading {
+  font-size: 1.5rem;
+  margin: 2vh 82vh;
+  font-family: monospace;
+  letter-spacing: 2px;
+  color: black;
+  font-weight: 600;
+}
 .propertybtn{
     border: 1.5px solid #c7c3c3;
     height: 4vh;
@@ -197,7 +205,19 @@ button:hover{
   flex-wrap: wrap;
   gap: 15px; /* Space between items */
 }
-
+.file_upload {
+  padding: 9px 7px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 0px;
+  height: 4vh;
+  margin-right: 5px;
+  font-family: arial;
+  width: 8vw;
+  background: linear-gradient(to right, #ff4447, #8a2e2e);
+  color: white;
+  border-radius: 10px;
+}
 .custom {
   display: flex;
   align-items: center;
@@ -260,7 +280,7 @@ button:hover{
 .fieldvalue4 {
     display: none;
   }
-  .btn2 {
+  .btnx {
     display: block;
     width: 57vw;
     margin: 0px 77px;
@@ -274,6 +294,7 @@ button:hover{
     text-transform: capitalize;
     text-align: center;
     padding: 12px 156px;
+    font-family: sans-serif;
   }
   #last{
     background: #a5a1a1 !important;
@@ -298,7 +319,10 @@ button:hover{
     font-weight: 500;
     border-radius: 10px;
     margin-top: 2vh;
+    font-family: sans-serif;
+    letter-spacing: 1px;
  }
+ 
  .partition3{
   display: flex;
   flex-direction: row;
@@ -308,6 +332,10 @@ button:hover{
   display: flex;
   justify-content: center;
  }
+ .facility_icon {
+  width: 25px;
+  height: 25px;
+}
  @media only screen and (min-width: 0px) and (max-width: 450px) {
   .formfield-b{
     width: 24vw;
@@ -318,8 +346,31 @@ button:hover{
     box-shadow: 2px 3px 2px #e1dddd;
     text-align: center;
 }
-.custom-file-input {
-  padding: 3px 3px;
+#formheading {
+  margin: 2vh 1vh;
+ 
+}
+.propbtn {
+  margin: 8px 11px;
+  padding: 5px 0px;
+}
+.innerbuttonbox {
+  margin: 8px 11px;
+  padding: 5px 0px;
+}
+.propertybtn {
+  border: 1.5px solid #c7c3c3;
+  height: 4vh;
+  padding: 2px 4px;
+  width: 25vw;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  box-shadow: 2px 2px 2px grey;
+  margin: 2px 11px;
+}
+.file_upload {
+  padding: 10px 3px;
   cursor: pointer;
   text-align: center;
   margin-top: 0px;
@@ -330,11 +381,23 @@ button:hover{
 }
 .save{
   height: 6vh !important;
+  width: 39vw;
 }
-.btn2{
+.btnx{
   text-align: center;
   height: 7vh !important;
 }
+
+.part1, .part2, .part4,.part3, .part5 {
+   margin: 2vh 2vw;
+   }
+   .icon {
+    font-size: 1.7rem;
+    font-weight: 600;
+    max-width: 10vw;
+    max-height: 5vw;
+}
+
  }
 @media only screen and (min-width: 451px) and (max-width: 480px){
     #property{
@@ -358,6 +421,11 @@ button:hover{
       margin-bottom: 10px;
       width: 41vw;
       height: 5vh;
+
+  }
+  #formheading {
+    margin: 2vh 1vh;
+   
   }
 }
 
@@ -367,6 +435,27 @@ button:hover{
 }
 .formfield{
   width: 17vw;
+}
+.propbtn {
+  float: right;
+  margin-right: 38vw;
+  padding: 10px 0px;
+}
+.propertybtn {
+  border: 1.5px solid #c7c3c3;
+  height: 4vh;
+  padding: 4px;
+  width: 11vw;
+  font-size: 16px;
+  margin: 6px 10px;
+}
+.innerbuttonbox {
+  float: right;
+  margin-right: 2vw;
+}
+#formheading {
+  margin: 2vh 1vh;
+ 
 }
 }
 @media only screen and (min-width: 861px)and (max-width: 1450px){
@@ -384,12 +473,18 @@ button:hover{
   height: 4vh;
   width: 12vw;
   font-size: 16px;
+  font-family: sans-serif;
 }
 .innerbuttonbox {
   float: right;
+  font-family: sans-serif;
 }
 .formbox {
   width: 31vw;
+  font-family: sans-serif;
+}
+#formheading {
+  margin: 2vh 56vh;
 }
 .part1, .part2,.part3, .part4, .part5 {
   display: flex;
@@ -400,6 +495,7 @@ button:hover{
   border-radius: 13px;
   width: 62vw;
   float: right;
+  font-family: sans-serif;
 }
 #property {
   margin-left: 2vw;
@@ -439,7 +535,25 @@ button:hover{
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   
 }
-.btn2 {
+
+.propbtn {
+  float: right;
+  margin-right: 39.5vw;
+  padding: 10px 0px;
+}
+.propertybtn {
+  border: 1.5px solid #c7c3c3;
+  height: 4vh;
+  padding: 4px;
+  width: 11vw;
+  font-size: 16px;
+  margin: 6px 10px;
+}
+.innerbuttonbox {
+  float: right;
+  margin-right: 2vw;
+}
+.btnx {
   display: block;
   width: 51vw;
   margin: 2px 61px;
@@ -465,6 +579,7 @@ button:hover{
   justify-content: space-between;
   margin: 5px 5px;
 }
+
 }
 @media only screen and (min-width: 1451px) and (max-width: 3000px){
   #upperview {
@@ -474,17 +589,26 @@ button:hover{
 }
 .propbtn {
   float: right;
-  margin-right: 37.5vw;
+  margin-right: 38vw;
+  padding: 10px 0px;
 }
+
+#formheading {
+  font-size: 1.5rem;
+  margin: 2vh 67vh;
+}
+
 .propertybtn {
   border: 1.5px solid #c7c3c3;
   height: 4vh;
-  width: 12vw;
+  padding: 4px;
+  width: 11vw;
   font-size: 16px;
+  margin: 6px 10px;
 }
 .innerbuttonbox {
   float: right;
-  /* margin-right: 12.5vw; */
+  margin-right: 2vw;
 }
 .formbox {
   width: 31vw;
@@ -492,7 +616,7 @@ button:hover{
 .part1, .part2,.part3, .part4, .part5 {
   display: flex;
   flex-direction: column;
-  margin: 2vh 0.5vw;
+  margin: 2vh 1vw;
   padding: 10px 5px;
   background: white;
   border-radius: 13px;
@@ -512,6 +636,8 @@ button:hover{
   font-weight: 500;
   border-radius: 10px;
   margin-top: 2vh;
+  font-family: sans-serif;
+  letter-spacing: 1px;
 }
 .formfield {
   width: 13vw;
@@ -543,7 +669,7 @@ button:hover{
 .partition2 {
   grid-template-columns: repeat(auto-fill, minmax(231px, 1fr));
 }
-.btn2 {
+.btnx {
   display: block;
   width: 29vw;
   margin: 27px 20vw;
@@ -577,5 +703,18 @@ button:hover{
   display: flex;
   justify-content: space-between;
   margin: 5px 5px;
+}
+.file_upload {
+  padding: 9px 7px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 0px;
+  height: 4vh;
+  margin-right: 5px;
+  font-family: arial;
+  width: 8vw;
+  background: linear-gradient(to right, #ff4447, #8a2e2e);
+  color: white;
+  border-radius: 10px;
 }
 }

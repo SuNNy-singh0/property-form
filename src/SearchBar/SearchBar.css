@@ -13,6 +13,7 @@
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
   }
   .homeBlackBox{
     padding: 42px 0 0;
@@ -28,6 +29,9 @@
     gap: 12px;
     flex-direction: column;
     z-index: 0;
+  }
+  .mysearchbar{
+    height: 10vh;
   }
   .container2{
     background: url('/public/search.jpeg');
@@ -59,12 +63,14 @@
     border: none;
     width: 7vw;
     font-size: 15px;
+    border: none !important;
   }
   .activebtn{
     background-color: white;
     color: black;
     border: none;
     width: 7vw;
+    background: linear-gradient(to right, #ff4447, #8a2e2e) !important;
   }
   .btnr:hover, .activebtn {
     border-bottom: none !important;
@@ -130,7 +136,7 @@
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background: linear-gradient(to right, #ff4447, #8a2e2e);
     color: #fff;
     font-size: 16px;
     cursor: pointer;
@@ -168,9 +174,13 @@
 .multi-range-slider .labels {
   display: none !important;
 }
-.price{
-  font-size: 1.1rem;
+#price_value{
+  font-size: 1.3rem;
   font-family: sans-serif;
+  background-color: none;
+}
+.total{
+display: none;
 }
 @media only screen and (min-width: 0px) and (max-width: 500px) {
   .phonenavbar{
@@ -182,7 +192,9 @@
     color: black;
     margin-top: 0vh;
     }
-    
+    .total{
+      display: block;
+      }
     .nav-item {
       cursor: pointer;
       padding: 6px;
@@ -216,15 +228,13 @@
           border: none !important;
           border-radius: 10px;
           padding: 20px 10px;
-           box-shadow: none !important;
+          box-shadow: none !important;
           flex-direction: column;
           -webkit-touch-callout: none;
           -webkit-user-select: none;
           user-select: none;
-          /* margin-top: 40px !important; */
-          width: 83%;
-          
-          
+          margin-top: 25px !important;
+          width: 80% !important;
       }
       .multi-range-slider .thumb::before {
         width: 18px !important;
@@ -238,7 +248,7 @@
    #searchrange{
       margin-left: 8%;
    }
-   .price{
+   #price_value{
       display: flex;
       justify-content: space-between;
       font-size: 16px;
@@ -261,9 +271,15 @@
   #hello{
     width: 10vw !important;
   }
+  #phone_slider{
+    width: 80% !important;
+  }
    
 }
 @media only screen and (min-width: 1000px) and (max-width: 1370px)  {
+  .total{
+    display: none;
+  }
   .homeBlackBox {
     padding: 38px 0 0;
     margin-top: 0px;
@@ -295,6 +311,9 @@
 }
 }
 @media only screen and (min-width: 1371px) and (max-width: 1900px){
+  .total{
+    display: none;
+  }
   .homeBlackBox {
     padding: 38px 0 0;
     margin-top: 0px;
@@ -323,9 +342,14 @@
 .btnr {
   width: 18vw;
   font-size: 15px;
+  border: none !important;
+  background-color: #8a2e2e;
 }
 }
 @media only screen and (min-width: 1901px) and (max-width: 3000px){
+  .total{
+    display: none;
+  }
   .homeBlackBox {
     padding: 38px 0 0;
     margin-top: 0px;

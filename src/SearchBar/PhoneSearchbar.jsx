@@ -50,7 +50,9 @@ function PhoneSearchbar() {
         </ul>
         <div className='searchbox' onClick={handleSearch}>
         <input placeholder='Enter locality/property'  id='searchinput'  ></input>
-        <span className='searchbutton'><FaSearchLocation /></span>
+        <span className='searchbutton '>
+          
+          <FaSearchLocation  id='search_icon'/></span>
         </div>
         
     </div>

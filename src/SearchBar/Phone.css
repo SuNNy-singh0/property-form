@@ -47,7 +47,12 @@
   }
   .searchbutton{
     font-size: 1.3rem;
+    border :2px solid white;
   }
+  #search_icon{
+    width: 13% !important;
+  }
+  
   
   
   

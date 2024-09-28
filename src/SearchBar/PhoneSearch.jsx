@@ -38,6 +38,7 @@ function PhoneSearch({match}) {
       };
     return (
         <>
+        <div className='total'>
             <header>
                 <nav>
                     <ul className="phonenavbar">
@@ -111,7 +112,7 @@ function PhoneSearch({match}) {
                             ruler={false}
                         />
                         <br></br>
-                        <span className='price'>
+                        <span id='price_value'>
                             <span> Min Value: {minValue > 100 ? (minValue / 100).toLocaleString() + ' Cr' : minValue.toLocaleString() + ' L'}</span> 
                             <span>Max Value :{maxValue > 100 ? (maxValue / 100).toLocaleString() + ' Cr' : maxValue.toLocaleString() + ' L'}</span>
                         </span>
@@ -120,7 +121,7 @@ function PhoneSearch({match}) {
                         {(btntype==='rent' || saleType==='rent') &&(
                             <>
                             <MultiRangeSlider
-                            className='slider'
+                            id='phone_slider'
                             min={5}
                             max={500}
                             step={1}
@@ -135,7 +136,7 @@ function PhoneSearch({match}) {
                             ruler={false}
                         />
                         <br></br>
-                        <span className='price'>
+                        <span id='price_value'>
                             <span> Min Value: {minValue > 100 ? (minValue / 100).toLocaleString() + ' L' : minValue.toLocaleString() + ' k'}</span> 
                             <span>Max Value :{maxValue > 100 ? (maxValue / 100).toLocaleString() + ' L' : maxValue.toLocaleString() + ' k'}</span>
                         </span>
@@ -212,6 +213,7 @@ function PhoneSearch({match}) {
               <button  id='search-btn hello'  onClick={handleSearch}>Search</button>
             </div>
           
+            </div>
             </div>
         </>
     )
